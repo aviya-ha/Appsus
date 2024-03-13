@@ -1,48 +1,50 @@
  /* mail index  */
 
  .mail-index {
-     background-color: var(--main-bg-color);
      padding-inline: var(--padding-inline);
  }
 
  .main-container-mail-header {
      grid-row: 1;
-     grid-column: 1 / -1;
-
-
-     display: grid;
-     grid-template-columns: 0.3fr 1fr;
-
-
-     /* background-color: green; */
- }
-
- .btn-open-side-nav {
-     grid-column: 1;
-
-     width: fit-content;
-     height: fit-content;
-
-     align-self: center;
- }
-
- .inside-mail-header {
      grid-column: 2;
      display: grid;
      grid-template-columns: 0.5fr 1fr;
+     /* background-color: rgb(168, 173, 255); */
  }
 
  .mail-logo {
+     align-self: end;
+     justify-self: start;
      color: red;
  }
 
  .mail-search {
-     background-color: aqua;
      justify-self: start;
  }
 
  .main-container-side-nav {
-     background-color: yellowgreen;
-     grid-row: 2 / 4;
+     /* background-color: yellowgreen; */
+     grid-row: 1 / -1;
      grid-column: 1;
+     display: grid;
+     grid-template-rows: auto 1fr;
+ }
+
+ .btn-open-side-nav {
+     grid-column: 1;
+     grid-row: 1;
+     justify-self: center;
+     align-self: center;
+ }
+
+ .main-side-nav{
+    grid-column: 1;
+    grid-row:2;
+    justify-self: center;
+    align-self: start;
+    
+    
+    display: flex;
+    flex-flow: column;
+    align-items: center;
  }

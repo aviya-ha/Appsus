@@ -5,16 +5,13 @@ export function MailPreview({ mail }) {
     var dayName
     var monthName
 
-    function addClassIsRead() {
-        if (mail.isRead) return ' read'
-        else return ''
-    }
 
-    return <article className={"mail-preview" + addClassIsRead()}>
-        <span>
+
+    return <article className={"mail-preview"} >
+        <span className="mail-subject">
             {mail.subject}
         </span>
-        <span>
+        <span className="mail-date">
             {dayName = utilService.getDayName(mail.sentAt)}
             {monthName = utilService.getMonthNum(mail.sentAt)}
         </span>

@@ -5,6 +5,9 @@ const { Link } = ReactRouterDOM
 import { mailService } from "../services/mail.service.js"
 import { utilService } from "../../../services/util.service.js"
 
+import { MailSideNav } from "../cmps/MailSideNav.jsx"
+import { MailHeader } from "../cmps/MailHeader.jsx"
+
 export function MailDetails() {
     const [isLoading, setIsLoading] = useState(true)
     const [mail, setMail] = useState(null)
@@ -29,9 +32,12 @@ export function MailDetails() {
     }
     var date
     if (isLoading) return <div>Loading details..</div>
-    return <section className="mail-details">
+    return <section className="mail-details-container">
+ <MailHeader />
 
-        <header className="header-mail-details-">
+<MailSideNav />
+<section className="mail-details">
+      <header className="header-mail-details-">
             <Link to="/mail"><button>Go back</button></Link>
             <h1>from: {mail.from}</h1> 
             <span>{mail.sentAt}</span>
@@ -40,6 +46,8 @@ export function MailDetails() {
         <main className="main-mail-details">
             <p>{mail.body}</p>
         </main>
+</section>
+      
 
     </section>
 }
