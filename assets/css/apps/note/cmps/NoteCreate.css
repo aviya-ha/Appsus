@@ -2,7 +2,9 @@
     background-color: rgb(127, 212, 212);
     width: 50%;
     margin-bottom: 5px;
-
+    display: flex;
+    flex-direction: column;
+    
 }
 
 .form-add-note{
@@ -10,6 +12,12 @@
     flex-direction: column;
     
     /* background-color: darkgreen; */
+}
+
+.add-note-action-container{
+    display: flex;
+    flex-direction: column;
+    
 }
 
 .btn-add-note{
