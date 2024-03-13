@@ -54,16 +54,11 @@ export function NoteIndex() {
     }
 
     function onEditNote(noteId) {
-
         noteService.getById(noteId)
             .then(noteToEdit => {
-
-                
-                if(!noteToEdit.isEdit){
-                    
+                if (!noteToEdit.isEdit) {
                     noteToEdit.isEdit = true
-                    
-                    setNoteEdit(prevNote => ({ ...prevNote,...noteToEdit }))
+                    setNoteEdit(prevNote => ({ ...prevNote, ...noteToEdit }))
                 }
             })
 
@@ -82,7 +77,7 @@ export function NoteIndex() {
             })
     }
 
-console.log('note:',note)
+    console.log('note:', note)
     if (!notes) return <div>loading...</div>
     return <section className="note-index">
         {/* <NoteFilter
