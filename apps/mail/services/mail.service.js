@@ -38,22 +38,23 @@ export const mailService = {
     getEmptyMail,
     getDefaultFilter,
     getFilterFromParams,
-    getFullDate
+    getFullDate,
+    
 }
 // For Debug only
 window.cs = mailService
 
 
 // function query(filterBy = getDefaultFilter()) {
-function query() {
+function query(filterBy = getDefaultFilter()) {
     // console.log('filterBy', filterBy)
 
     return storageService.query(MAIL_KEY)
         .then(mails => {
-            // if (filterBy.txt) {
-            //     const regex = new RegExp(filterBy.txt, 'i')
-            //     mails = mails.filter(mails => regex.test(mails.vendor))
-            // }
+            if (filterBy.search) {
+                const regex = new RegExp(filterBy.search, 'i')
+                mails = mails.filter(mail => regex.test(mail.subject))
+            }
             // if (filterBy.minSpeed) {
             //     mails = mails.filter(mails => mails.maxSpeed >= filterBy.minSpeed)
             // }
@@ -98,15 +99,15 @@ function getEmptyMail(subject = '', from = '', to = '') {
 }
 
 function getDefaultFilter() {
-    return { txt: '', minSpeed: 50, desc: '' }
+    return { search: '' }
 }
 
 function getFilterFromParams(searchParams = {}) {
     const defaultFilter = getDefaultFilter()
     return {
-        txt: searchParams.get('txt') || defaultFilter.txt,
-        minSpeed: searchParams.get('minSpeed') || defaultFilter.minSpeed,
-        desc: searchParams.get('desc') || defaultFilter.desc
+        search: searchParams.get('search') || defaultFilter.search,
+        // minSpeed: searchParams.get('minSpeed') || defaultFilter.minSpeed,
+        // desc: searchParams.get('desc') || defaultFilter.desc
     }
 }
 
@@ -143,5 +144,7 @@ function getFullDate(date = 1710332613261){
     date = new Date(date)
     return date
 }
+
+
 
 
