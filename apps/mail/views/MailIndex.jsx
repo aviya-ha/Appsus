@@ -47,7 +47,6 @@ export function MailIndex() {
         
 <MailSideNav/>
         
-        <div>mail app</div>
         <MailList
             mails={mails}
             isRead = {isRead}

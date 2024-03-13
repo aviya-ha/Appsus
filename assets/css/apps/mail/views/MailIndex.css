@@ -1,39 +1,48 @@
  /* mail index  */
 
  .mail-index {
-    background-color: var(--main-bg-color);
-    /* margin-inline: var(--margin-inline); */
-    padding-inline: var(--padding-inline);
-}
+     background-color: var(--main-bg-color);
+     padding-inline: var(--padding-inline);
+ }
 
-.main-container-mail-header {
-    grid-row: 1;
-    grid-column: 1 / -1;
-
-
-    display: grid;
-    grid-template-columns: 0.3fr 1fr;
+ .main-container-mail-header {
+     grid-row: 1;
+     grid-column: 1 / -1;
 
 
-    background-color: green;
-}
+     display: grid;
+     grid-template-columns: 0.3fr 1fr;
 
-.btn-open-side-nav {
-    grid-column: 1;
 
-    width: fit-content;
-    height: fit-content;
+     /* background-color: green; */
+ }
 
-    align-self: center;
-}
+ .btn-open-side-nav {
+     grid-column: 1;
 
-.inside-mail-header {
-    grid-column: 2;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+     width: fit-content;
+     height: fit-content;
 
-.mail-search{
-    
-}
+     align-self: center;
+ }
+
+ .inside-mail-header {
+     grid-column: 2;
+     display: grid;
+     grid-template-columns: 0.5fr 1fr;
+ }
+
+ .mail-logo {
+     color: red;
+ }
+
+ .mail-search {
+     background-color: aqua;
+     justify-self: start;
+ }
+
+ .main-container-side-nav {
+     background-color: yellowgreen;
+     grid-row: 2 / 4;
+     grid-column: 1;
+ }

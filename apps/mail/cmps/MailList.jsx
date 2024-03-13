@@ -8,7 +8,7 @@ export function MailList({ mails,isRead }) {
 
 
     return <section>
-        <div>Mail list</div>
+       
         <ul className="mails-list clean-list ">
             {
                 mails.map(mail =>
