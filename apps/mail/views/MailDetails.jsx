@@ -1,0 +1,56 @@
+    const { useState, useEffect } = React
+const { useParams, useNavigate } = ReactRouter
+const { Link } = ReactRouterDOM
+
+import { mailService } from "../services/mail.service.js"
+
+export function MailDetails(){
+	const [isLoading, setIsLoading] = useState(true)
+	const [mail, setMail] = useState(null)
+	const params = useParams()
+	const navigate = useNavigate()
+
+	useEffect(() => {
+		loadCar()
+	}, [params.mailId])
+
+	function loadCar() {
+		setIsLoading(true)
+		mailService.get(params.mailId)
+			.then(mail => setMail(mail))
+			.catch(err => {
+				console.log('Had issues loading mail', err)
+				navigate('/mail')
+			})
+			.finally(() => {
+				setIsLoading(false)
+			})
+	}
+
+	if (isLoading) return <div>Loading details..</div>
+	return <section className="mail-details">
+        
+<header className="header-mail-details-">
+		<Link to="/mail"><button>Go back</button></Link>
+		<h1>from: {mail.from}</h1> <span>{mail.from}</span>
+</header >
+<main className="main-mail-details">
+<p>{mail.body}</p>
+</main>
+		{/* <h5 className={getSpeedClass()}>Max speed: {car.maxSpeed}</h5> */}
+		{/* <img src={`assets/img/${car.vendor}.png`} /> */}
+		{/* <p>{car.desc}</p>	 */}
+		
+	</section>
+}
+
+// const email = {
+//     id: 'e101',
+//     subject: 'Miss you!',
+//     body: 'Would love to catch up sometimes',
+//     isRead: false,
+//     sentAt: 1551133930594,
+//     removedAt: null,
+//     from: 'momo@momo.com',
+//     to: 'user@appsus.com'
+// }
