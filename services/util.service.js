@@ -6,6 +6,7 @@ export const utilService = {
     padNum,
     getDayName,
     getMonthName,
+    getMonthNum
 }
 
 function makeId(length = 6) {
@@ -48,15 +49,22 @@ function getRandomColor() {
     return color
 }
 
-function getDayName(date, locale) {
+function getDayName(date, locale= 'en-US') {
     date = new Date(date)
-    return date.toLocaleDateString(locale, { weekday: 'long' })
+    return date.toLocaleDateString(locale, { weekday: 'short' })
 }
 
 
 function getMonthName(date) {
+    date = new Date(date)
     const monthNames = ["January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
     ]
     return monthNames[date.getMonth()]
+}
+
+
+function getMonthNum(date) {
+    date = new Date(date)
+    return date.getMonth()
 }

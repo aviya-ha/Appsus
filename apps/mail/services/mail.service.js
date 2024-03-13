@@ -1,8 +1,8 @@
 // mail service
 
 import { utilService } from '../../../services/util.service.js'
-import { storageService } from '../../../services/storage.service.js'
 import { storageServiceLocal } from '../../../services/storage.service.js'
+import { storageService } from '../../../services/async-storage.service.js'
 
 
 
@@ -10,21 +10,21 @@ const MAIL_KEY = 'mailDB'
 
 // var gFilterBy
 
-const email = {
-    id: 'e101',
-    subject: 'Miss you!',
-    body: 'Would love to catch up sometimes',
-    isRead: false,
-    sentAt: 1551133930594,
-    removedAt: null,
-    from: 'momo@momo.com',
-    to: 'user@appsus.com'
-}
+// const email = {
+//     id: 'e101',
+//     subject: 'Miss you!',
+//     body: 'Would love to catch up sometimes',
+//     isRead: false,
+//     sentAt: 1551133930594,
+//     removedAt: null,
+//     from: 'momo@momo.com',
+//     to: 'user@appsus.com'
+// }
 
 const loggedinUser = {
     email: 'user@appsus.com',
     fullname: 'Mahatma Appsus'
-   }
+}
 
 
 _createMails()
@@ -43,8 +43,9 @@ export const mailService = {
 window.cs = mailService
 
 
-function query(filterBy = getDefaultFilter()) {
-    console.log('filterBy', filterBy)
+// function query(filterBy = getDefaultFilter()) {
+function query() {
+    // console.log('filterBy', filterBy)
 
     return storageService.query(MAIL_KEY)
         .then(mails => {
@@ -65,7 +66,7 @@ function query(filterBy = getDefaultFilter()) {
 
 function get(mailID) {
     return storageService.get(MAIL_KEY, mailID)
-        .then(mail => _setNextPrevMailId(mail))
+    // .then(mail => _setNextPrevMailId(mail))
     // return axios.get(MAIL_KEY, mailID)
 }
 
@@ -85,13 +86,13 @@ function save(mail) {
 function getEmptyMail(subject = '', from = '', to = '') {
     return {
         id: '',
-        subject: '',
+        subject,
         body: '',
         isRead: false,
-        sentAt: new Date(),
+        sentAt:  Date.now(),
         removedAt: null,
-        from: '',
-        to: ''
+        from,
+        to
     }
 }
 
@@ -120,7 +121,7 @@ function _createMails() {
 }
 
 function _createMail(subject = '', from = '', to = '') {
-    const mail = getEmptyMail(subject , from , to )
+    const mail = getEmptyMail(subject, from, to)
     mail.id = utilService.makeId()
     mail.body = utilService.makeLorem(100)
     return mail
