@@ -17,6 +17,7 @@ const gNotes = [
         id: 'n101',
         createdAt: 1112222,
         type: 'NoteTxt',
+        isEdit: false,
         isPinned: true,
         style: {
             backgroundColor: '#00d'
@@ -29,6 +30,7 @@ const gNotes = [
         id: 'n102',
         type: 'NoteImg',
         isPinned: false,
+        isEdit: false,
         style: {
             backgroundColor: '#00d'
         },
@@ -42,6 +44,7 @@ const gNotes = [
         id: 'n103',
         type: 'NoteTodos',
         isPinned: false,
+        isEdit: false,
         info: {
             title: 'Get my stuff together',
             todos: [
@@ -100,6 +103,7 @@ function getEmptyNote() {
         createdAt: Date.now(),
         type: '',
         isPinned: false,
+        isEdit: false,
         style: {
             backgroundColor:'',
         },
@@ -109,26 +113,6 @@ function getEmptyNote() {
         }
     }
 }
-
-// function _createNote() {
-//     return {
-//         id: utilService.makeId(),
-//         title: 'metus hendrerit',
-//         subtitle: utilService.makeLorem(15),
-//         authors: ['Oren Yaniv'],
-//         publishedDate: utilService.getRandomInt(1700, 2022),
-//         description: utilService.makeLorem(50),
-//         pageCount: utilService.getRandomInt(1, 700),
-//         categories: ['Computers', 'Hack'],
-//         thumbnail: 'http://coding-academy.org/books-photos/20.jpg',
-//         language: 'en',
-//         listPrice: {
-//             amount: utilService.getRandomInt(10, 30),
-//             currencyCode: 'EUR',
-//             isOnSale: false,
-//         },
-//     }
-// }
 
 function _saveNotesToStorage() {
     storageServiceLocal.saveToStorage(NOTE_KEY, gNotes)
