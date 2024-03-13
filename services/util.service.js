@@ -6,7 +6,8 @@ export const utilService = {
     padNum,
     getDayName,
     getMonthName,
-    getMonthNum
+    getMonthNum,
+    
 }
 
 function makeId(length = 6) {
@@ -68,3 +69,4 @@ function getMonthNum(date) {
     date = new Date(date)
     return date.getMonth()
 }
+

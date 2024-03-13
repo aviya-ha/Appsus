@@ -4,7 +4,13 @@ import { utilService } from "../../../services/util.service.js"
 export function MailPreview({ mail }) {
     var dayName
     var monthName
-    return <article className="mail-preview">
+
+    function addClassIsRead() {
+        if (mail.isRead) return ' read'
+        else return ''
+    }
+
+    return <article className={"mail-preview" + addClassIsRead()}>
         <span>
             {mail.subject}
         </span>

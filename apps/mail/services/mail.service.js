@@ -37,7 +37,8 @@ export const mailService = {
     save,
     getEmptyMail,
     getDefaultFilter,
-    getFilterFromParams
+    getFilterFromParams,
+    getFullDate
 }
 // For Debug only
 window.cs = mailService
@@ -136,6 +137,11 @@ function _setNextPrevMailId(mail) {
         car.prevMailId = prevMail.id
         return mail
     })
+}
+
+function getFullDate(date = 1710332613261){
+    date = new Date(date)
+    return date
 }
 
 

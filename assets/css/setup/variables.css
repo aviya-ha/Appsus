@@ -1,3 +1,8 @@
 :root {
-    --main-bg-color: lightblue;
+    --main-bg-color: rgb(232, 243, 243);
+    --second-bg-color: rgb(249, 255, 255);
+
+
+    --margin-inline: 10px;
+    --padding-inline: 5px;
 }

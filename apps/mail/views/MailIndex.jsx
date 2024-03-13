@@ -1,12 +1,14 @@
 const { useState, useEffect } = React
 const { Link, useSearchParams } = ReactRouterDOM
 
+import { MailSideNav } from "../cmps/MailSideNav.jsx"
+import { MailHeader } from "../cmps/MailHeader.jsx"
+
 import { MailList } from "../cmps/MailList.jsx"
 import { mailService } from "../services/mail.service.js"
 
 export function MailIndex() {
     const [mails, setMails] = useState(null)
-
 
     function logMails() {
         mailService.query()
@@ -17,7 +19,6 @@ export function MailIndex() {
         loadMails()
     }, [])
 
-
     function loadMails() {
         mailService.query()
             .then((mails) => {
@@ -25,14 +26,33 @@ export function MailIndex() {
                 console.log('mails:', mails)
             })
     }
-console.log('mails:', mails)
+
+    function isRead(mailId){
+        mailService.get(mailId)
+        .then((mail) => {
+            mail.isRead = true
+            console.log('mail:', mail)
+            mailService.save(mail)
+
+        })
+
+        
+
+    }
+
+    // console.log('mails:', mails)
     if (!mails) return <div>loading...</div>
-    return <section className= "mail-index">
+    return <section className="mail-index">
+        <MailHeader/>
+        
+<MailSideNav/>
+        
         <div>mail app</div>
         <MailList
             mails={mails}
-            // onRemoveCar={onRemoveCar}
-            // onUpdateCar={onUpdateCar}
+            isRead = {isRead}
+        // onRemoveMail={onRemoveMail}
+        // onUpdateCar={onUpdateCar}
         />
     </section>
 }

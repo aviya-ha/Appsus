@@ -1,1 +1,39 @@
  /* mail index  */
+
+ .mail-index {
+    background-color: var(--main-bg-color);
+    /* margin-inline: var(--margin-inline); */
+    padding-inline: var(--padding-inline);
+}
+
+.main-container-mail-header {
+    grid-row: 1;
+    grid-column: 1 / -1;
+
+
+    display: grid;
+    grid-template-columns: 0.3fr 1fr;
+
+
+    background-color: green;
+}
+
+.btn-open-side-nav {
+    grid-column: 1;
+
+    width: fit-content;
+    height: fit-content;
+
+    align-self: center;
+}
+
+.inside-mail-header {
+    grid-column: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mail-search{
+    
+}

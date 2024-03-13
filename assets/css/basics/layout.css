@@ -1,0 +1,6 @@
+/* Mail */
+ .mail-index{
+    display: grid;
+    grid-template-columns: 0.3fr 1fr;
+    grid-template-rows: 0.3fr 1fr;
+ }

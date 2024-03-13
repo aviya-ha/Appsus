@@ -4,18 +4,18 @@ import { utilService } from "../../../services/util.service.js"
 import { MailPreview } from "../cmps/MailPreview.jsx"
 
 
-export function MailList({ mails, }) {
+export function MailList({ mails,isRead }) {
 
 
     return <section>
         <div>Mail list</div>
-        <ul className="mails-list ">
+        <ul className="mails-list clean-list ">
             {
                 mails.map(mail =>
                     <li key={mail.id}>
-                        <input type="checkbox" id="isChecked" name="isChecked" />
-                        <input type="checkbox" id="isStared" name="isStared" />
-                        <Link to={`/mail/${mail.id}`}>
+                        <button className = "btn btn-selected-mail"></button>
+                        <button className = "btn btn-starred-mail"></button>
+                        <Link to={`/mail/${mail.id}`} onClick={() => isRead(mail.id)} >
                             <MailPreview mail={mail} />
                         </Link>
                     </li>)
