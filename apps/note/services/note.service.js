@@ -96,13 +96,14 @@ function getEmptyNote() {
 
     return {
         id: '',
-        createdAt: 1112222,
+        createdAt: new Date(),
         type: '',
         isPinned: false,
         style: {
             backgroundColor:'',
         },
         info: {
+            title:'',
             txt: ''
         }
     }
