@@ -6,6 +6,7 @@ import { mailService } from "../services/mail.service.js"
 import { utilService } from "../../../services/util.service.js"
 
 import { MailSideNav } from "../cmps/MailSideNav.jsx"
+import { RemoveMail } from "../cmps/RemoveMail.jsx"
 import { MailHeader } from "../cmps/MailHeader.jsx"
 
 export function MailDetails() {
@@ -30,15 +31,23 @@ export function MailDetails() {
                 setIsLoading(false)
             })
     }
-    var date
+
+   
+    
     if (isLoading) return <div>Loading details..</div>
     return <section className="mail-details-container">
- <MailHeader />
+ {/* <MailHeader /> */}
+ <section className="main-container-mail-header">
 
-<MailSideNav />
+<h1 className="mail-logo">Email</h1>
+</section>
+<MailSideNav/>
 <section className="mail-details">
       <header className="header-mail-details-">
             <Link to="/mail"><button>Go back</button></Link>
+            <RemoveMail
+            mailId={params.mailId}
+            setMail={setMail}/>
             <h1>from: {mail.from}</h1> 
             <span>{mail.sentAt}</span>
         </header >

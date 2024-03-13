@@ -55,8 +55,8 @@ function query(filterBy = getDefaultFilter()) {
                 const regex = new RegExp(filterBy.search, 'i')
                 mails = mails.filter(mail => regex.test(mail.subject))
             }
-            // if (filterBy.minSpeed) {
-            //     mails = mails.filter(mails => mails.maxSpeed >= filterBy.minSpeed)
+            // if (filterBy.isRead) {
+            //     mails = mails.filter(mails => mails.maxSpeed >= filterBy.isRead)
             // }
             // if (filterBy.desc) {
             //     const regex = new RegExp(filterBy.desc, 'i')
@@ -94,7 +94,8 @@ function getEmptyMail(subject = '', from = '', to = '') {
         sentAt:  Date.now(),
         removedAt: null,
         from,
-        to
+        to,
+        // folder: [a,b]
     }
 }
 
@@ -118,6 +119,9 @@ function _createMails() {
         mails.push(_createMail('new updates', 'momo@momo.com', 'user@appsus.com'))
         mails.push(_createMail('Upload the files to a new cloud', 'momo@momo.com', 'user@appsus.com'))
         mails.push(_createMail('Updates Privacy Policy', 'momo@momo.com', 'user@appsus.com'))
+        mails.push(_createMail('Hay to all', 'user@appsus.com', 'momo@momo.com'))
+        mails.push(_createMail('Welcome party', 'user@appsus.com', 'momo@momo.com'))
+        mails.push(_createMail('I don\'t like the updates Privacy Policy', 'user@appsus.com', 'momo@momo.com'))
         storageServiceLocal.saveToStorage(MAIL_KEY, mails)
     }
 }
