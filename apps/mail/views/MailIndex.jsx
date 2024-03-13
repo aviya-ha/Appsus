@@ -9,6 +9,7 @@ import { mailService } from "../services/mail.service.js"
 
 export function MailIndex() {
     const [mails, setMails] = useState(null)
+    const [isShowDetails, setIsShowDetails]=useState(false)
 
     function logMails() {
         mailService.query()
@@ -17,7 +18,8 @@ export function MailIndex() {
 
     useEffect(() => {
         loadMails()
-    }, [])
+        console.log('isShowDetails:', isShowDetails)
+    }, [isShowDetails])
 
     function loadMails() {
         mailService.query()
@@ -27,33 +29,34 @@ export function MailIndex() {
             })
     }
 
-    function isRead(mailId){
+    function isRead(mailId) {
         mailService.get(mailId)
-        .then((mail) => {
-            mail.isRead = true
-            console.log('mail:', mail)
-            mailService.save(mail)
+            .then((mail) => {
+                mail.isRead = true
+                console.log('mail:', mail)
+                mailService.save(mail)
 
-        })
+            })
 
-        
+
 
     }
 
     // console.log('mails:', mails)
     if (!mails) return <div>loading...</div>
     return <section className="mail-index">
-        <MailHeader/>
-        
-<MailSideNav/>
-        
-        <div>mail app</div>
+        <MailHeader />
+
+        <MailSideNav />
+
         <MailList
             mails={mails}
-            isRead = {isRead}
+            isRead={isRead}
+            setIsShowDetails={setIsShowDetails}
         // onRemoveMail={onRemoveMail}
         // onUpdateCar={onUpdateCar}
         />
+
     </section>
 }
 

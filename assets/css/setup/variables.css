@@ -1,6 +1,7 @@
 :root {
-    --main-bg-color: rgb(232, 243, 243);
-    --second-bg-color: rgb(249, 255, 255);
+    --main-bg-color: rgba(216, 230, 235, 0.347);
+    --second-bg-color: rgb(255, 255, 255);
+    --second-bg-color--1: rgb(235, 235, 235);
 
 
     --margin-inline: 10px;
