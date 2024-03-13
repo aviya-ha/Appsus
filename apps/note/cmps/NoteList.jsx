@@ -4,14 +4,14 @@ export function NoteList({notes,onRemoveNote,onEditNote}) {
     console.log('notes:', notes)
 
 
-    return <ul className="car-list">
+    return <ul className="note-list-container clean-list">
 		{
-			notes.map(note => <li key={note.id}>
-				<h1>{note.info.title}</h1>
-				<h1>{note.info.txt}</h1>
-				<div className="not-actions">
-					<button className="remove-btn" onClick={() => onRemoveNote(note.id)}>X</button>
-					<button onClick={() => onEditNote(note.id)}>Edit</button>
+			notes.map(note => <li className="card-note-container" key={note.id}>
+				<p>{note.info.title}</p>
+				<p>{note.info.txt}</p>
+				<div className="actions-note-container">
+					<button className="btn-remove-note" onClick={() => onRemoveNote(note.id)}>X</button>
+					<button className="btn-edit-note" onClick={() => onEditNote(note.id)}>Edit</button>
 				</div>
 			</li>)
 		}

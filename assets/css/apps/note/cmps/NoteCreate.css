@@ -1,0 +1,23 @@
+.add-note-container{
+    background-color: rgb(127, 212, 212);
+    width: 50%;
+    margin-bottom: 5px;
+
+}
+
+.form-add-note{
+    display: flex;
+    flex-direction: column;
+    
+    /* background-color: darkgreen; */
+}
+
+.btn-add-note{
+    margin-top: 5px;
+    width: fit-content;
+    align-self: center;
+}
+
+.btn-add-note:hover{
+background-color: beige;
+}

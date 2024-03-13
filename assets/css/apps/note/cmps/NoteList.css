@@ -1,1 +1,24 @@
- /* note list */
+.note-list-container {
+    background-color: lightblue;
+    columns: 200px 4;
+
+}
+
+.card-note-container p {
+    margin: 0;
+    /* text-wrap: wrap; */
+    /* text-align: justify; */
+}
+
+.card-note-container {
+    margin-bottom: 10px;
+    /* columns: 200px; */
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    align-items: center;
+    background-color: rgb(175, 236, 134);
+    width: auto;
+
+}

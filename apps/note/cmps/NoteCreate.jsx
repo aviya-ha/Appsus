@@ -1,8 +1,8 @@
 
 export function NoteCreate({onSaveNote}) {
 
-    return <section>
-        <form onSubmit={onSaveNote}>
+    return <section className="add-note-container">
+        <form className="form-add-note" onSubmit={onSaveNote}>
            <input
             type="text"
             placeholder="Enter Title"
@@ -10,6 +10,7 @@ export function NoteCreate({onSaveNote}) {
             // onChange={handleChange}
             defaultValue=''
             autoComplete="off"
+            title="Enter Title"
         />
         <input
             type="text"
@@ -18,8 +19,9 @@ export function NoteCreate({onSaveNote}) {
             // onChange={handleChange}
             defaultValue=''
             autoComplete="off"
+            title="Enter Txt"
         /> 
-        <button>save</button>
+        <button className="btn-add-note" title="save note">save</button>
         </form>
         
     </section>
