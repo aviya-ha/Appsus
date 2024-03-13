@@ -8,8 +8,12 @@ import { MailList } from "../cmps/MailList.jsx"
 import { mailService } from "../services/mail.service.js"
 
 export function MailIndex() {
+    const [searchParams, setSearchParams] = useSearchParams()
+
+
     const [mails, setMails] = useState(null)
-    const [isShowDetails, setIsShowDetails]=useState(false)
+    const [filterBy, setFilterBy] = useState(mailService.getFilterFromParams(searchParams))
+
 
     function logMails() {
         mailService.query()
@@ -18,16 +22,25 @@ export function MailIndex() {
 
     useEffect(() => {
         loadMails()
-        console.log('isShowDetails:', isShowDetails)
-    }, [isShowDetails])
+        setSearchParams(filterBy)
+        console.log('filterBy:', filterBy)
+    }, [filterBy])
 
+
+    function onSetFilter(fieldsToUpdate) {
+        console.log('fieldsToUpdate', fieldsToUpdate)
+
+        setFilterBy(prevFilter => ({ ...prevFilter, ...fieldsToUpdate }))
+    }
     function loadMails() {
-        mailService.query()
+        mailService.query(filterBy)
             .then((mails) => {
                 setMails(mails)
                 console.log('mails:', mails)
             })
     }
+
+    
 
     function isRead(mailId) {
         mailService.get(mailId)
@@ -45,14 +58,16 @@ export function MailIndex() {
     // console.log('mails:', mails)
     if (!mails) return <div>loading...</div>
     return <section className="mail-index">
-        <MailHeader />
+        <MailHeader 
+        onSetFilter={onSetFilter}
+        filterBy={filterBy}/>
 
         <MailSideNav />
 
         <MailList
             mails={mails}
             isRead={isRead}
-            setIsShowDetails={setIsShowDetails}
+            // setIsShowDetails={setIsShowDetails}
         // onRemoveMail={onRemoveMail}
         // onUpdateCar={onUpdateCar}
         />
