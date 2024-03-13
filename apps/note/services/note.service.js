@@ -84,6 +84,7 @@ function save(note) {
     if (note.id) {
         return storageService.put(NOTE_KEY, note)
     } else {
+        console.log('note:', note)
         return storageService.post(NOTE_KEY, note)
     }
 }
@@ -96,7 +97,7 @@ function getEmptyNote() {
 
     return {
         id: '',
-        createdAt: new Date(),
+        createdAt: Date.now(),
         type: '',
         isPinned: false,
         style: {
