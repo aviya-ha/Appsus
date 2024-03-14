@@ -4,7 +4,7 @@ const { Link } = ReactRouterDOM
 import { mailService } from "../services/mail.service.js"
 
 
-export function RemoveMail({mailId, setMail}){
+export function RemoveMail({ mailId, setMail }) {
 
     function onRemoveMail() {
         mailService.remove(mailId)
@@ -18,7 +18,5 @@ export function RemoveMail({mailId, setMail}){
             })
     }
 
-    return  <Link to="/mail" className="link link-remove"><button className="btn btn-remove fa-solid fa-trash-can" onClick={onRemoveMail}></button></Link>
-       
-
+    return <Link to="/mail" className="link link-remove"><button className="btn btn-remove fa-solid fa-trash-can" onClick={onRemoveMail}></button></Link>
 }

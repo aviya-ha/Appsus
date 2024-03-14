@@ -3,13 +3,13 @@ const { useParams, useNavigate } = ReactRouter
 const { Link } = ReactRouterDOM
 
 import { mailService } from "../services/mail.service.js"
-import { utilService } from "../../../services/util.service.js"
 
 import { MailSideNav } from "../cmps/MailSideNav.jsx"
 import { RemoveMail } from "../cmps/RemoveMail.jsx"
-import { MailHeader } from "../cmps/MailHeader.jsx"
 
 export function MailDetails() {
+    const [isComposeMail, setIsComposeMail] = useState(false)
+    const [newMail, setNewMail] = useState(mailService.getEmptyMail())
     const [isLoading, setIsLoading] = useState(true)
     const [mail, setMail] = useState(null)
     const params = useParams()
@@ -32,7 +32,13 @@ export function MailDetails() {
             })
     }
 
-
+    function saveMail(newMail) {
+        mailService.save(newMail)
+            .then(savedNewMail => {
+                setNewMail(prevNewMail => ({ ...prevNewMail, ...savedNewMail }))
+            }
+            )
+    }
 
     if (isLoading) return <div>Loading details..</div>
     return <section className="mail-details-container">
@@ -42,8 +48,9 @@ export function MailDetails() {
             <h1 className="mail-logo">Email</h1>
         </section>
 
-        <MailSideNav />
-        
+        <MailSideNav
+            setIsComposeMail={setIsComposeMail} />
+
         <section className="mail-details">
             <header className="header-mail-details">
                 <Link to="/mail"><button className="btn btn-go-back fa-solid fa-arrow-left"></button></Link>
@@ -55,24 +62,20 @@ export function MailDetails() {
             </header >
             <section className="mail-details-body" >
                 <div className="mail-subject">{mail.subject}</div>
-            <main className="main-mail-details">
-                <p>{mail.body}</p>
-            </main>
+                <main className="main-mail-details">
+                    <p>{mail.body}</p>
+                </main>
             </section>
-            
+
         </section>
 
-
+        {/* {
+            isComposeMail && <ComposeMail
+                setIsComposeMail={setIsComposeMail}
+                saveMail={saveMail}
+                newMail={newMail}
+                // saveMail={saveMail}
+            />
+        } */}
     </section>
 }
-
-// const email = {
-//     id: 'e101',
-//     subject: 'Miss you!',
-//     body: 'Would love to catch up sometimes',
-//     isRead: false,
-//     sentAt: 1551133930594,
-//     removedAt: null,
-//     from: 'momo@momo.com',
-//     to: 'user@appsus.com'
-// }
