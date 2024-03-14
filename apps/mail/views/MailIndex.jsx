@@ -5,6 +5,7 @@ import { mailService } from "../services/mail.service.js"
 
 import { MailSideNav } from "../cmps/MailSideNav.jsx"
 import { MailHeader } from "../cmps/MailHeader.jsx"
+import { AppNav } from "../../../cmps/AppNav.jsx"
 
 import { MailList } from "../cmps/MailList.jsx"
 import { ComposeMail } from "../cmps/ComposeMail.jsx"
@@ -50,6 +51,7 @@ export function MailIndex() {
 
     if (!mails) return <div>loading...</div>
     return <section className="mail-index">
+        <AppNav />
         <MailHeader
             onSetFilter={onSetFilter}
             filterBy={filterBy} />
