@@ -46,7 +46,7 @@ export function MailDetails() {
         
         <section className="mail-details">
             <header className="header-mail-details">
-                <Link to="/mail"><button className="btn btn-go-back">Go back</button></Link>
+                <Link to="/mail"><button className="btn btn-go-back fa-solid fa-arrow-left"></button></Link>
                 <RemoveMail
                     mailId={params.mailId}
                     setMail={setMail} />

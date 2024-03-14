@@ -23,7 +23,7 @@ export function MailIndex() {
     useEffect(() => {
         loadMails()
         setSearchParams(filterBy)
-        // console.log('filterBy:', filterBy)
+        console.log('filterBy:', filterBy)
     }, [filterBy])
 
 

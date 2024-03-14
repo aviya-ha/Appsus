@@ -30,7 +30,7 @@ export function MailHeader({ onSetFilter, filterBy }) {
 
 
 			
-	<select className="deBug" onChange={(ev) => { setCmpType(ev.target.value) }}>
+	<select className="" onChange={onFilter} name="isRead">
 			<option value="all">All</option>
 			<option value="read">Read</option>
 			<option value="unRead">Unread</option>

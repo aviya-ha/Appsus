@@ -18,7 +18,7 @@ export function RemoveMail({mailId, setMail}){
             })
     }
 
-    return  <Link to="/mail" className="link link-remove"><button className="btn btn-remove" onClick={onRemoveMail}>remove</button></Link>
+    return  <Link to="/mail" className="link link-remove"><button className="btn btn-remove fa-solid fa-trash-can" onClick={onRemoveMail}></button></Link>
        
 
 }
