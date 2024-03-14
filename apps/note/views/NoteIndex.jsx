@@ -1,5 +1,5 @@
 const { useState, useEffect } = React
-// const { Link, useSearchParams } = ReactRouterDOM
+const { Link, useSearchParams } = ReactRouterDOM
 
 import { noteService } from "../services/note.service.js"
 import {showSuccessMsg,showErrorMsg } from "../../../services/event-bus.service.js"
@@ -7,26 +7,28 @@ import {showSuccessMsg,showErrorMsg } from "../../../services/event-bus.service.
 import { NoteList } from "../cmps/NoteList.jsx"
 import { NoteCreate } from "../cmps/NoteCreate.jsx"
 import { NoteEdit } from "../cmps/NoteEdit.jsx"
+import { NoteFilter } from "../cmps/NoteFilter.jsx"
 
 export function NoteIndex() {
+    const [searchParams, setSearchParams] = useSearchParams()
+
     const [notes, setNotes] = useState(null)
     const [note, setNoteEdit] = useState(null)
-    // const [searchParams, setSearchParams] = useSearchParams()
+    const [filterBy, setFilterBy] = useState(noteService.getFilterFromParams(searchParams))
 
 
 
     useEffect(() => {
+        setSearchParams(filterBy)
         loadNotes()
-    }, [])
+    }, [filterBy])
 
-    // function onSetFilter(fieldsToUpdate) {
-    //     console.log('fieldsToUpdate', fieldsToUpdate)
-
-    //     setFilterBy(prevFilter => ({ ...prevFilter, ...fieldsToUpdate }))
-    // }
+    function onSetFilter(fieldsToUpdate) {
+        setFilterBy(prevFilter => ({ ...prevFilter, ...fieldsToUpdate }))
+    }
 
     function loadNotes() {
-        noteService.query()
+        noteService.query(filterBy)
             .then((notes) => {
                 setNotes(notes)
             })
@@ -57,9 +59,9 @@ export function NoteIndex() {
 
     if (!notes) return <div>loading...</div>
     return <section className="note-index">
-        {/* <NoteFilter
+        <NoteFilter
             onSetFilter={onSetFilter}
-            filterBy={{ txt, minSpeed }} /> */}
+            filterBy={filterBy} />
 
         <NoteCreate
         setNotes={setNotes}

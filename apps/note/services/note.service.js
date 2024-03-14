@@ -9,6 +9,7 @@ export const noteService = {
     // getDefaultFilter,
     remove,
     getEmptyNote,
+    getFilterFromParams,
 }
 window.cs = noteService
 
@@ -57,22 +58,24 @@ const gNotes = [
 
 const NOTE_KEY = 'notesDB'
 
-function query(filterBy) {
+function query(filterBy = getDefaultFilter()) {
     return storageService.query(NOTE_KEY)
-        .then((notes) => {
-            if (!notes || !notes.length) {
-                notes = gNotes
-                _saveNotesToStorage()
-            }
-            // if (filterBy.title) {
-            //     const regExp = new RegExp(filterBy.title, 'i')
-            //     notes = notes.filter((n) => regExp.test(n.title))
-            // }
-            // if (filterBy.price) {
-            //     notes = notes.filter((n) => n.listPrice.amount <= filterBy.price)
-            // }
-            return notes
-        })
+    .then((notes) => {
+        if (!notes || !notes.length) {
+            notes = gNotes
+            _saveNotesToStorage()
+        }
+        if (filterBy.txt) {
+            const regExp = new RegExp(filterBy.txt, 'i')
+            notes = notes.filter((n) => regExp.test(n.info.txt ||n.info.title))
+        }
+        if (filterBy.type) {
+            const regExp = new RegExp(filterBy.type, 'i')
+            notes = notes.filter((n) => regExp.test(n.type))
+            // notes = notes.filter((n) => n.type <= filterBy.type)
+        }
+        return notes
+    })
 }
 
 function getById(noteId) {
@@ -91,9 +94,17 @@ function save(note) {
     }
 }
 
-// function getDefaultFilter() {
-//     return { title: '', price: 0 }
-// }
+function getDefaultFilter() {
+    return { txt: '',type:'' }
+}
+
+function getFilterFromParams(searchParams = {}) {
+    const defaultFilter = getDefaultFilter()
+    return {
+        txt: searchParams.get('txt') || defaultFilter.txt,
+        type: searchParams.get('type') || defaultFilter.type,
+    }
+}
 
 function getEmptyNote() {
 
