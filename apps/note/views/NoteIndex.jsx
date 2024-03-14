@@ -1,4 +1,5 @@
 const { useState, useEffect } = React
+// const { Link, useSearchParams } = ReactRouterDOM
 
 import { noteService } from "../services/note.service.js"
 
@@ -9,6 +10,7 @@ import { NoteEdit } from "../cmps/NoteEdit.jsx"
 export function NoteIndex() {
     const [notes, setNotes] = useState(null)
     const [note, setNoteEdit] = useState(null)
+    // const [searchParams, setSearchParams] = useSearchParams()
 
 
 
@@ -25,9 +27,7 @@ export function NoteIndex() {
     function loadNotes() {
         noteService.query()
             .then((notes) => {
-
                 setNotes(notes)
-
             })
     }
 
@@ -39,7 +39,6 @@ export function NoteIndex() {
                     setNoteEdit(prevNote => ({ ...prevNote, ...noteToEdit }))
                 }
             })
-
     }
 
     function onRemoveNote(noteId) {
@@ -55,7 +54,6 @@ export function NoteIndex() {
             })
     }
 
-    
     if (!notes) return <div>loading...</div>
     return <section className="note-index">
         {/* <NoteFilter
@@ -64,14 +62,13 @@ export function NoteIndex() {
 
         <NoteCreate
         setNotes={setNotes}
-            // onSaveNote={onSaveNote}
+            
         />
 
         <NoteList
             notes={notes}
             onRemoveNote={onRemoveNote}
-            onEditNote={onEditNote}
-        // onUpdateNote={onUpdateCar}                      
+            onEditNote={onEditNote}                     
         />
         {
             (note && note.isEdit) && <NoteEdit

@@ -44,6 +44,7 @@ background-color: beige;
     min-height: 10px;
     min-width: 10px;
     cursor: pointer;
+    border: 1px solid black;
 
     display: grid;
     place-items: center;
