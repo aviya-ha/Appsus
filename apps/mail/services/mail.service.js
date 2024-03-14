@@ -55,9 +55,13 @@ function query(filterBy = getDefaultFilter()) {
                 const regex = new RegExp(filterBy.search, 'i')
                 mails = mails.filter(mail => regex.test(mail.subject))
             }
-            // if (filterBy.isRead) {
-            //     mails = mails.filter(mails => mails.maxSpeed >= filterBy.isRead)
-            // }
+            if (filterBy.isRead === 'read') {
+                mails = mails.filter(mails => mails.isRead)
+            }
+
+            if (filterBy.isRead === 'unRead') {
+                mails = mails.filter(mails => !mails.isRead)
+            }
             // if (filterBy.desc) {
             //     const regex = new RegExp(filterBy.desc, 'i')
             //     mails = mails.filter(mails => regex.test(mails.desc))
@@ -100,13 +104,14 @@ function getEmptyMail(subject = '', from = '', to = '') {
 }
 
 function getDefaultFilter() {
-    return { search: '' }
+    return { search: '', isRead: '' }
 }
 
 function getFilterFromParams(searchParams = {}) {
     const defaultFilter = getDefaultFilter()
     return {
         search: searchParams.get('search') || defaultFilter.search,
+        isRead: searchParams.get('isRead') || defaultFilter.isRead,
         // minSpeed: searchParams.get('minSpeed') || defaultFilter.minSpeed,
         // desc: searchParams.get('desc') || defaultFilter.desc
     }
