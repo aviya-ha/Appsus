@@ -15,25 +15,19 @@ export function MailIndex() {
     const [mails, setMails] = useState(null)
     const [isComposeMail, setIsComposeMail] = useState(false)
     const [filterBy, setFilterBy] = useState(mailService.getFilterFromParams(searchParams))
-
-
-    function logMails() {
-        mailService.query()
-            .then(mails => console.log('mails:', mails))
-    }
+	const [newMail, setNewMail] = useState(mailService.getEmptyMail())
 
     useEffect(() => {
         loadMails()
         setSearchParams(filterBy)
-        console.log('filterBy:', filterBy)
-    }, [filterBy])
-
+        // console.log('filterBy:', filterBy)
+    }, [filterBy ,newMail])
 
     function onSetFilter(fieldsToUpdate) {
         // console.log('fieldsToUpdate', fieldsToUpdate)
-
         setFilterBy(prevFilter => ({ ...prevFilter, ...fieldsToUpdate }))
     }
+
     function loadMails() {
         mailService.query(filterBy)
             .then((mails) => {
@@ -41,44 +35,52 @@ export function MailIndex() {
                 // console.log('mails:', mails)
             })
     }
-
-    
-
     function isRead(mailId) {
         mailService.get(mailId)
             .then((mail) => {
                 mail.isRead = true
                 mailService.save(mail)
             })
+    }
 
 
+    function saveMail(newMail){
+        console.log('newMail:', newMail)
+        mailService.save(newMail)
+        .then(savedNewMail=>{
+            setNewMail(prevNewMail =>({...prevNewMail, ...savedNewMail}))
+        }
+        )
 
     }
 
     // console.log('mails:', mails)
     if (!mails) return <div>loading...</div>
     return <section className="mail-index">
-        <MailHeader 
-        onSetFilter={onSetFilter}
-        filterBy={filterBy}/>
+        <MailHeader
+            onSetFilter={onSetFilter}
+            filterBy={filterBy} />
 
-        <MailSideNav 
-        setIsComposeMail={setIsComposeMail}
+        <MailSideNav
+            setIsComposeMail={setIsComposeMail}
         />
 
         <MailList
             mails={mails}
             isRead={isRead}
-            // setIsShowDetails={setIsShowDetails}
+        // setIsShowDetails={setIsShowDetails}
         // onRemoveMail={onRemoveMail}
         // onUpdateCar={onUpdateCar}
         />
         {
             isComposeMail && <ComposeMail
-            setIsComposeMail={setIsComposeMail}
+                setIsComposeMail={setIsComposeMail}
+                saveMail={saveMail}
+                newMail={newMail}
+                // saveMail={saveMail}
             />
         }
-        
+
 
     </section>
 }

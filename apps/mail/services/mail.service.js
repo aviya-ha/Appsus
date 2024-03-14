@@ -81,10 +81,11 @@ function remove(mailID) {
 }
 
 function save(mail) {
+    console.log('mail:', mail)
     if (mail.id) {
         return storageService.put(MAIL_KEY, mail)
     } else {
-        mail = _createMail(mail.vendor, mail.maxSpeed)
+        mail = _createMail( mail.subject,  mail.from,  mail.to)
         return storageService.post(MAIL_KEY, mail)
     }
 }
