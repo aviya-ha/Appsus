@@ -1,6 +1,7 @@
 .note-list-container {
     background-color: lightblue;
     columns: 200px 4;
+    padding:10px ;
 
 }
 
@@ -20,5 +21,6 @@
     align-items: center;
     background-color: rgb(175, 236, 134);
     width: auto;
+    break-inside: avoid;
 
 }

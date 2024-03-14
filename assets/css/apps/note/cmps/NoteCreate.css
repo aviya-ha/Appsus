@@ -16,11 +16,12 @@
 
 .add-note-action-container{
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
     
 }
 
-.btn-add-note{
+.add-note-action-container .btn{
     margin-top: 5px;
     width: fit-content;
     align-self: center;
@@ -28,4 +29,22 @@
 
 .btn-add-note:hover{
 background-color: beige;
+}
+
+.items-container {
+    
+    /* padding: 20px; */
+    display: flex;
+    gap: 3px;
+}
+
+.item {
+    
+    padding: 5px;
+    min-height: 10px;
+    min-width: 10px;
+    cursor: pointer;
+
+    display: grid;
+    place-items: center;
 }

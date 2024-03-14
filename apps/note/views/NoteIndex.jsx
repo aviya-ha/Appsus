@@ -31,28 +31,6 @@ export function NoteIndex() {
             })
     }
 
-    function onSaveNote(ev) {
-        ev.preventDefault()
-        let noteToAdd = noteService.getEmptyNote()
-
-        let title = ev.target[0].value
-        let txt = ev.target[1].value
-        noteToAdd.info.title = title
-        noteToAdd.info.txt = txt
-        noteService.save(noteToAdd)
-            .then(savedNote => {
-                setNotes(prevNotes => ([savedNote, ...prevNotes]))
-                // showSuccessMsg('Note saved successfully')
-            })
-            .catch(err => {
-                console.log('Had issues saving note', err)
-                // showErrorMsg('could not save note')
-            })
-        ev.target[0].value = ''
-        ev.target[1].value = ''
-
-    }
-
     function onEditNote(noteId) {
         noteService.getById(noteId)
             .then(noteToEdit => {
@@ -77,7 +55,7 @@ export function NoteIndex() {
             })
     }
 
-    console.log('note:', note)
+    
     if (!notes) return <div>loading...</div>
     return <section className="note-index">
         {/* <NoteFilter
@@ -85,7 +63,8 @@ export function NoteIndex() {
             filterBy={{ txt, minSpeed }} /> */}
 
         <NoteCreate
-            onSaveNote={onSaveNote}
+        setNotes={setNotes}
+            // onSaveNote={onSaveNote}
         />
 
         <NoteList
