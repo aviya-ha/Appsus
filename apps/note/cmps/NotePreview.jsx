@@ -1,6 +1,7 @@
 const { useState} = React
 
 import { noteService } from "../services/note.service.js"
+import {showSuccessMsg,showErrorMsg } from "../../../services/event-bus.service.js"
 
 import { ColorInput } from "./dinamic/ColorInput.jsx"
 
@@ -31,11 +32,11 @@ export function NotePreview({ notes, onRemoveNote, onEditNote }) {
 			.then(savedNote => {
 				console.log('Note saved!!');
 				loadNote(savedNote.id)
-				// showSuccessMsg('Note saved successfully')
+				showSuccessMsg('Note saved successfully')
 			})
 			.catch(err => {
 				console.log('Had issues saving note', err)
-				// showErrorMsg('could not save note')
+				showErrorMsg('could not save note')
 			})
 		
 	}

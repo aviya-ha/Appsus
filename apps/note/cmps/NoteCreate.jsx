@@ -2,6 +2,9 @@ const { useState, useEffect } = React
 
 import { noteService } from "../services/note.service.js"
 
+import {showSuccessMsg,showErrorMsg } from "../../../services/event-bus.service.js"
+
+
 import { ColorInput } from "./dinamic/ColorInput.jsx";
 
 
@@ -23,11 +26,11 @@ export function NoteCreate({setNotes}) {
         noteService.save(noteToAdd)
             .then(savedNote => {
                 setNotes(prevNotes => ([savedNote, ...prevNotes]))
-                // showSuccessMsg('Note saved successfully')
+                showSuccessMsg('Note created successfully')
             })
             .catch(err => {
-                console.log('Had issues saving note', err)
-                // showErrorMsg('could not save note')
+                // console.log('Had issues saving note', err)
+                showErrorMsg('could not create note')
             })
         ev.target[0].value = ''
         ev.target[1].value = ''
