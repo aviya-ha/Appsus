@@ -1,16 +1,24 @@
 
 
 
-export function ColorInput({noteStyle,onChangeStyle }) {
+export function ColorInput({noteCreateStyle,onChangeNoteCreateStyle,onChangeStyle }) {
     const colors = ['#B4FF9F', '#F9FFA4', '#FFD59E', '#FFA1A1']
     
+
 
     function onSetColor(color) {
         
         const style = {style: {
             backgroundColor:color,
         }}
-        onChangeStyle(style)
+
+        if(noteCreateStyle){
+            onChangeNoteCreateStyle(style)
+        } else{
+            onChangeStyle(style)
+        } 
+        
+        
     }
 
     return <section className="color-input">

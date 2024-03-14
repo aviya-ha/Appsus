@@ -12,6 +12,9 @@ export function NoteCreate({setNotes}) {
     const [noteStyle, setNoteStyle] = useState({style: {
         backgroundColor:'',
     }})
+    const [noteCreateStyle, setNoteCreateStyle] = useState({
+        backgroundColor: 'lightcyan'
+    })
 
     
     function onSaveNote(ev) {
@@ -37,12 +40,15 @@ export function NoteCreate({setNotes}) {
 
     }
 
+    function onChangeNoteCreateStyle({style}){
+        setNoteCreateStyle(prevNoteCreateStyle =>({...prevNoteCreateStyle,...style}))
+    }
 
     function onChangeStyle(style){
         setNoteStyle(prevNoteStyle =>({...prevNoteStyle,...style}))
     }
 
-    return <section className="add-note-container">
+    return <section style={noteCreateStyle} className="add-note-container">
         <form id="add-note-form" className="form-add-note" onSubmit={onSaveNote}>
             <input
                 type="text"
@@ -67,7 +73,8 @@ export function NoteCreate({setNotes}) {
             <button form="add-note-form" className="btn btn-add-note" title="save note">save</button>
             <button className="btn btn-background-color-note" title="background color">color</button> 
             <ColorInput
-            noteStyle={noteStyle}
+            noteCreateStyle={noteCreateStyle}
+            onChangeNoteCreateStyle={onChangeNoteCreateStyle}
             onChangeStyle={onChangeStyle}
             />
         </section>
