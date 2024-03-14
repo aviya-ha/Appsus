@@ -4,7 +4,7 @@ import { utilService } from "../../../services/util.service.js"
 import { MailPreview } from "../cmps/MailPreview.jsx"
 
 
-export function MailList({ mails, isRead, setIsShowDetails }) {
+export function MailList({ mails, isRead,  }) {
     
     function addClassIsRead(mail) {
         if (mail.isRead) return ' read'
@@ -20,9 +20,7 @@ export function MailList({ mails, isRead, setIsShowDetails }) {
                         <button className="btn btn-starred-mail"></button>
                     </div>
                     <Link to={`/mail/${mail.id}`} 
-                    onClick={() => {
-                        isRead(mail.id)
-                        setIsShowDetails(true)}} >
+                    onClick={() => {isRead(mail.id)}} >
                         <MailPreview
                             mail={mail}
                         />

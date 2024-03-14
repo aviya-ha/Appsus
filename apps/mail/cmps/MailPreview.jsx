@@ -8,6 +8,9 @@ export function MailPreview({ mail }) {
 
 
     return <article className={"mail-preview"} >
+        <span className="mail-from-who">
+        {mail.from}
+        </span>
         <span className="mail-subject">
             {mail.subject}
         </span>

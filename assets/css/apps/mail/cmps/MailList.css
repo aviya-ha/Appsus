@@ -16,9 +16,13 @@
 
  .mail-preview{
     display: grid;
-     grid-template-columns: 1fr auto;
+     grid-template-columns: auto 1fr auto;
  }
 
  .mails-list li.read{
     background-color: var(--second-bg-color--1);
+ }
+
+ .mail-subject{
+   justify-self: center;
  }

@@ -23,12 +23,12 @@ export function MailIndex() {
     useEffect(() => {
         loadMails()
         setSearchParams(filterBy)
-        console.log('filterBy:', filterBy)
+        // console.log('filterBy:', filterBy)
     }, [filterBy])
 
 
     function onSetFilter(fieldsToUpdate) {
-        console.log('fieldsToUpdate', fieldsToUpdate)
+        // console.log('fieldsToUpdate', fieldsToUpdate)
 
         setFilterBy(prevFilter => ({ ...prevFilter, ...fieldsToUpdate }))
     }
@@ -36,7 +36,7 @@ export function MailIndex() {
         mailService.query(filterBy)
             .then((mails) => {
                 setMails(mails)
-                console.log('mails:', mails)
+                // console.log('mails:', mails)
             })
     }
 
@@ -46,9 +46,7 @@ export function MailIndex() {
         mailService.get(mailId)
             .then((mail) => {
                 mail.isRead = true
-                console.log('mail:', mail)
                 mailService.save(mail)
-
             })
 
 
