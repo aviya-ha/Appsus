@@ -1,5 +1,6 @@
 
 import { noteService } from "../services/note.service.js"
+import {showSuccessMsg,showErrorMsg } from "../../../services/event-bus.service.js"
 
 export function NoteEdit({ note, loadNotes }) {
     
@@ -14,13 +15,13 @@ export function NoteEdit({ note, loadNotes }) {
         note.info.txt = txt
         noteService.save(note)
             .then(savedNote => {
-                console.log('Note saved!!');
+                // console.log('Note saved!!');
                 loadNotes()
-                // showSuccessMsg('Note saved successfully')
+                showSuccessMsg('Note edit successfully')
             })
             .catch(err => {
-                console.log('Had issues saving note', err)
-                // showErrorMsg('could not save note')
+                console.error('Had issues saving note', err)
+                showErrorMsg('could not save note')
             })
         
         
