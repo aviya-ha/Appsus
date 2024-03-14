@@ -6,12 +6,14 @@ import { MailHeader } from "../cmps/MailHeader.jsx"
 
 import { MailList } from "../cmps/MailList.jsx"
 import { mailService } from "../services/mail.service.js"
+import { ComposeMail } from "../cmps/ComposeMail.jsx"
 
 export function MailIndex() {
     const [searchParams, setSearchParams] = useSearchParams()
 
 
     const [mails, setMails] = useState(null)
+    const [isComposeMail, setIsComposeMail] = useState(false)
     const [filterBy, setFilterBy] = useState(mailService.getFilterFromParams(searchParams))
 
 
@@ -60,7 +62,9 @@ export function MailIndex() {
         onSetFilter={onSetFilter}
         filterBy={filterBy}/>
 
-        <MailSideNav />
+        <MailSideNav 
+        setIsComposeMail={setIsComposeMail}
+        />
 
         <MailList
             mails={mails}
@@ -69,6 +73,12 @@ export function MailIndex() {
         // onRemoveMail={onRemoveMail}
         // onUpdateCar={onUpdateCar}
         />
+        {
+            isComposeMail && <ComposeMail
+            setIsComposeMail={setIsComposeMail}
+            />
+        }
+        
 
     </section>
 }
