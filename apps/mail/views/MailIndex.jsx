@@ -31,8 +31,10 @@ export function MailIndex() {
     function loadMails() {
         mailService.query(filterBy)
             .then((mails) => {
+                
+                // setMails(mailService.sortMails(mails))
                 setMails(mails)
-                // console.log('mails:', mails)
+                console.log('mails:', mails)
             })
     }
     function isRead(mailId) {
@@ -63,6 +65,8 @@ export function MailIndex() {
 
         <MailSideNav
             setIsComposeMail={setIsComposeMail}
+            onSetFilter={onSetFilter}
+            filterBy={filterBy}
         />
 
         <MailList

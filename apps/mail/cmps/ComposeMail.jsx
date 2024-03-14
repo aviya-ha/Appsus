@@ -6,17 +6,14 @@ import { mailService } from "../services/mail.service.js"
 export function ComposeMail({ setIsComposeMail, saveMail, newMail,}) {
 	const [newMailToSave, setNewMailToSave] = useState(newMail)
 
-    
-    // useEffect(() => {
-	// 	setNewMail(newMailToSave)
-	// }, [newMailToSave])
 
 	function onSaveMail(ev) {
         console.log('ev:', ev)
 		ev.preventDefault()
         showModal()
         console.log('newMailToSave:', newMailToSave)
-		saveMail(newMailToSave)
+        if (newMailToSave.to)saveMail(newMailToSave)
+		
         
 	}
 
@@ -32,7 +29,8 @@ function handleChange({ target }){
 
     return <section className="mail-compose-container">
         <header className="mail-compose-header">
-            <h1>New Message</h1> <button className="fa-solid fa-xmark"></button>
+            <h1>New Message</h1> 
+            {/* <button className="fa-solid fa-xmark" ></button> */}
         </header>
         <form className="mail-compose-main" onSubmit={onSaveMail}>
             <input className="mail-compose-to"

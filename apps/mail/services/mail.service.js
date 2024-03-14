@@ -39,7 +39,8 @@ export const mailService = {
     getDefaultFilter,
     getFilterFromParams,
     getFullDate,
-    
+    sortMails
+
 }
 // For Debug only
 window.cs = mailService
@@ -47,25 +48,25 @@ window.cs = mailService
 
 // function query(filterBy = getDefaultFilter()) {
 function query(filterBy = getDefaultFilter()) {
-    // console.log('filterBy', filterBy)
+    console.log('filterBy', filterBy)
 
     return storageService.query(MAIL_KEY)
         .then(mails => {
+            console.log('mails:', mails)
+            if (filterBy.folder) {
+                mails = mails.filter(mail => mail.folder === filterBy.folder)
+            }
             if (filterBy.search) {
                 const regex = new RegExp(filterBy.search, 'i')
                 mails = mails.filter(mail => regex.test(mail.subject))
             }
             if (filterBy.isRead === 'read') {
-                mails = mails.filter(mails => mails.isRead)
+                mails = mails.filter(mail => mail.isRead)
             }
 
             if (filterBy.isRead === 'unRead') {
-                mails = mails.filter(mails => !mails.isRead)
+                mails = mails.filter(mail => !mail.isRead)
             }
-            // if (filterBy.desc) {
-            //     const regex = new RegExp(filterBy.desc, 'i')
-            //     mails = mails.filter(mails => regex.test(mails.desc))
-            // }
             return mails
         })
 }
@@ -85,7 +86,7 @@ function save(mail) {
     if (mail.id) {
         return storageService.put(MAIL_KEY, mail)
     } else {
-        mail = _createMail( mail.subject,  mail.from,  mail.to)
+        mail = _createMail(mail.subject, mail.from, mail.to)
         return storageService.post(MAIL_KEY, mail)
     }
 }
@@ -96,16 +97,16 @@ function getEmptyMail(subject = '', from = '', to = '') {
         subject,
         body: '',
         isRead: false,
-        sentAt:  Date.now(),
+        sentAt: Date.now(),
         removedAt: null,
         from,
         to,
-        // folder: [a,b]
+        folder: '',
     }
 }
 
 function getDefaultFilter() {
-    return { search: '', isRead: '' }
+    return { search: '', isRead: '', folder: 'inbox' }
 }
 
 function getFilterFromParams(searchParams = {}) {
@@ -113,9 +114,24 @@ function getFilterFromParams(searchParams = {}) {
     return {
         search: searchParams.get('search') || defaultFilter.search,
         isRead: searchParams.get('isRead') || defaultFilter.isRead,
-        // minSpeed: searchParams.get('minSpeed') || defaultFilter.minSpeed,
-        // desc: searchParams.get('desc') || defaultFilter.desc
+        folder: searchParams.get('folder') || defaultFilter.folder,
     }
+}
+
+// inbox  starred important sent drafts trash
+
+function sortMails(mails) {
+
+    mails.map(mail => {
+        if (mail.from === loggedinUser.email) {
+            mail.folder = 'inbox'
+        }
+        if (mail.from !== loggedinUser.email) {
+            mail.folder = 'sent'
+        }
+    })
+    return mails
+
 }
 
 function _createMails() {
@@ -148,6 +164,17 @@ function _createMails() {
         mails.push(_createMail('I don\'t like the updates Privacy Policy', 'user@appsus.com', 'momo@momo.com'))
         mails.push(_createMail('I don\'t like the updates Privacy Policy', 'user@appsus.com', 'momo@momo.com'))
         mails.push(_createMail('I don\'t like the updates Privacy Policy', 'user@appsus.com', 'momo@momo.com'))
+        mails.push(_createMail('Welcome party', 'user@appsus.com', 'momo@momo.com'))
+        mails.push(_createMail('Welcome party', 'user@appsus.com', 'momo@momo.com'))
+        mails.push(_createMail('Welcome party', 'user@appsus.com', 'momo@momo.com'))
+        mails.push(_createMail('Welcome party', 'user@appsus.com', 'momo@momo.com'))
+        mails.push(_createMail('Welcome party', 'user@appsus.com', 'momo@momo.com'))
+        mails.push(_createMail('Welcome party', 'user@appsus.com', 'momo@momo.com'))
+        mails.push(_createMail('Welcome party', 'user@appsus.com', 'momo@momo.com'))
+        mails.push(_createMail('Welcome party', 'user@appsus.com', 'momo@momo.com'))
+        mails.push(_createMail('Welcome party', 'user@appsus.com', 'momo@momo.com'))
+        mails.push(_createMail('Welcome party', 'user@appsus.com', 'momo@momo.com'))
+
         storageServiceLocal.saveToStorage(MAIL_KEY, mails)
     }
 }
@@ -156,6 +183,7 @@ function _createMail(subject = '', from = '', to = '') {
     const mail = getEmptyMail(subject, from, to)
     mail.id = utilService.makeId()
     mail.body = utilService.makeLorem(100)
+    mail.folder = (mail.from === loggedinUser.email)?  'inbox' :  'sent'
     return mail
 }
 
@@ -170,7 +198,7 @@ function _setNextPrevMailId(mail) {
     })
 }
 
-function getFullDate(date = 1710332613261){
+function getFullDate(date = 1710332613261) {
     date = new Date(date)
     return date
 }
