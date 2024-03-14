@@ -32,31 +32,36 @@ export function MailDetails() {
             })
     }
 
-   
-    
+
+
     if (isLoading) return <div>Loading details..</div>
     return <section className="mail-details-container">
- {/* <MailHeader /> */}
- <section className="main-container-mail-header">
 
-<h1 className="mail-logo">Email</h1>
-</section>
-<MailSideNav/>
-<section className="mail-details">
-      <header className="header-mail-details-">
-            <Link to="/mail"><button>Go back</button></Link>
-            <RemoveMail
-            mailId={params.mailId}
-            setMail={setMail}/>
-            <h1>from: {mail.from}</h1> 
-            <span>{mail.sentAt}</span>
-        </header >
-        <div>{mail.subject}</div>
-        <main className="main-mail-details">
-            <p>{mail.body}</p>
-        </main>
-</section>
-      
+        <section className="main-container-mail-header">
+
+            <h1 className="mail-logo">Email</h1>
+        </section>
+
+        <MailSideNav />
+        
+        <section className="mail-details">
+            <header className="header-mail-details">
+                <Link to="/mail"><button className="btn btn-go-back">Go back</button></Link>
+                <RemoveMail
+                    mailId={params.mailId}
+                    setMail={setMail} />
+                <h1 className="from">from: {mail.from}</h1>
+                <span className="date">{mail.sentAt}</span>
+            </header >
+            <section className="mail-details-body" >
+                <div className="mail-subject">{mail.subject}</div>
+            <main className="main-mail-details">
+                <p>{mail.body}</p>
+            </main>
+            </section>
+            
+        </section>
+
 
     </section>
 }

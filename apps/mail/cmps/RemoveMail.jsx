@@ -18,8 +18,7 @@ export function RemoveMail({mailId, setMail}){
             })
     }
 
-    return  <React.Fragment>
-        <Link to="/mail"><button onClick={onRemoveMail}>remove</button></Link>
-        </React.Fragment>
+    return  <Link to="/mail" className="link link-remove"><button className="btn btn-remove" onClick={onRemoveMail}>remove</button></Link>
+       
 
 }

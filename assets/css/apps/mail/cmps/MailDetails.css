@@ -1,12 +1,40 @@
-
-.mail-details-container{
+.mail-details-container {
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: auto 1fr;
     padding-inline: var(--padding-inline);
+
 }
 
-.mail-details{
-    
+.header-mail-details {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 1fr 1fr;
+    padding: var(--padding-inline);
+    gap: var(--padding-inline);
+    background-color: var(--second-bg-color);
 }
 
+.header-mail-details .btn-remove {
+    justify-self: center;
+    align-self: center;
+}
+
+.link-remove {
+    justify-self: end;
+}
+
+.header-mail-details .date {
+    justify-self: end;
+}
+
+.mail-details-body {
+    padding: var(--padding-inline);
+    display: flex;
+    flex-flow: column;
+    background-color: var(--second-bg-color);
+}
+
+.mail-subject {
+    margin: auto;
+}

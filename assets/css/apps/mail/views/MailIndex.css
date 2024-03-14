@@ -13,6 +13,7 @@
  }
 
  .mail-logo {
+    font-size: var(--logo-size);
      align-self: end;
      justify-self: start;
      color: red;
@@ -27,24 +28,23 @@
      grid-row: 1 / -1;
      grid-column: 1;
      display: grid;
-     grid-template-rows: auto 1fr;
+     grid-template-rows: var(--logo-size) 1fr;
  }
 
  .btn-open-side-nav {
      grid-column: 1;
      grid-row: 1;
-     justify-self: center;
-     align-self: center;
+     justify-self: start;
+     align-self: end;
+     padding-inline: var(--padding-inline);
  }
 
  .main-side-nav{
     grid-column: 1;
     grid-row:2;
-    justify-self: center;
-    align-self: start;
-    
-    
+    padding-block: calc(var(--padding-inline)*2) ;
+
     display: flex;
     flex-flow: column;
-    align-items: center;
+    align-items: start;
  }
