@@ -1,7 +1,7 @@
 
 
 
-export function ColorInput({noteCreateStyle,onChangeNoteCreateStyle,onChangeStyle }) {
+export function ColorInput({noteStyle,onChangeNoteStyle,onChangeStyle }) {
     const colors = ['#B4FF9F', '#F9FFA4', '#FFD59E', '#FFA1A1']
     
 
@@ -12,8 +12,9 @@ export function ColorInput({noteCreateStyle,onChangeNoteCreateStyle,onChangeStyl
             backgroundColor:color,
         }}
 
-        if(noteCreateStyle){
-            onChangeNoteCreateStyle(style)
+        if(noteStyle){
+            onChangeNoteStyle(style)
+            onChangeStyle(style)
         } else{
             onChangeStyle(style)
         } 

@@ -46,8 +46,11 @@ export function NotePreview({ notes, onRemoveNote, onEditNote }) {
 	return <React.Fragment>
 		{
 			notes.map(note => <li style={note.style} className="card-note-container" key={note.id}>
-				<p>{note.info.title}</p>
-				<p>{note.info.txt}</p>
+				<section className="text-note-container">
+				<span>{note.info.title}</span>
+					<span>{note.info.txt}</span>
+				</section>
+				
 				<div className="actions-note-container">
 					<button className="btn-remove-note" onClick={() => onRemoveNote(note.id)}>X</button>
 					<button className="btn-edit-note" onClick={() => onEditNote(note.id)}>Edit</button>

@@ -49,3 +49,29 @@ background-color: beige;
     display: grid;
     place-items: center;
 }
+
+
+
+
+.add-note-container-test{
+    display: flex;
+
+    justify-content: center;
+}
+
+.form-add-note-test input{
+    border: none;
+    border-radius: 10px;
+}
+
+.add-note-action-container-test{
+    display: flex;
+    gap: 5px;
+
+
+}
+
+.btn-icon:hover {
+    color: rgb(245, 204, 93);
+    scale: 1.005;
+}
