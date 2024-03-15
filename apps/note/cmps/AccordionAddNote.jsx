@@ -6,7 +6,7 @@ import { OpenAddNoteHtml } from "./OpenAddNoteHtml.jsx";
 import { AddNoteText } from "./AddNoteText.jsx";
 
 
-export function AccordionAddNote({ setNotes, noteCreateStyle, onChangeStyle }) {
+export function AccordionAddNote({ setNotes}) {
 	const [isOpen, setIsOpen] = useState(false)
 
 	function onTextClick() { }
