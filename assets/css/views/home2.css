@@ -1,0 +1,34 @@
+.home-container{
+    height: 100vh;
+    
+    background-image: linear-gradient(rgba(173, 118, 81, 0.534), rgb(189, 189, 109));
+    background-repeat:no-repeat ;
+    background-size: cover;
+    background-position:center ;
+    
+}
+
+.home-article{
+    position: absolute;
+    background:transparent ;
+    backdrop-filter: blur(10px);
+    top: 25%;
+    left: 40%;
+    transform: translate(-30%);
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.5);
+    font-size: 2em;
+    text-align: center;
+}
+.home-article h1{
+   font-family: ZenDots,sans-serif;
+}
+.home-article h3{
+   font-family: JetBrainsMono-Bold,sans-serif;
+}
