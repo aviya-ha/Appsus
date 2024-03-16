@@ -24,5 +24,30 @@ img {
 }
 
 button:hover{
+    border-radius: 25px;
     cursor: pointer;
+}
+
+input{
+    border-radius: 25px;
+    cursor: pointer;
+    background-color: var(--main-bg-color--1);
+    border:none ;
+}
+
+input:focus{
+    background-color: white;
+    scale: 1.1;
+}
+
+select{
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.mail-icon {
+    width: var(--logo-size);
+}
+.note-icon{
+    width: var(--logo-size);
 }

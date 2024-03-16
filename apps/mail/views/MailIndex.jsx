@@ -52,6 +52,7 @@ export function MailIndex() {
     if (!mails) return <div>loading...</div>
     return <section className="mail-index">
         <AppNav />
+        <span className="btn btn-open-side-nav fa-solid fa-bars"></span>
         <MailHeader
             onSetFilter={onSetFilter}
             filterBy={filterBy} />

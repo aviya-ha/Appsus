@@ -1,11 +1,12 @@
 :root {
-    --main-bg-color: rgb(234, 243, 246);
+    --main-bg-color: #f6f8f9;
+    --main-bg-color--1: #e8e8e8;
     --second-bg-color: rgb(255, 255, 255);
     --second-bg-color--1: rgb(235, 235, 235);
 
 
     --margin-inline: 10px;
-    --padding-inline: 5px;
+    --padding-inline: 10px;
 
     --logo-size:30px;
     --logo-size--1:20px;

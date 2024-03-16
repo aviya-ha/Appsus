@@ -7,55 +7,22 @@
      grid-template-rows: auto 1fr;
  }
 
- .mail-index .app-nav{
-    grid-row: 1 / -1;
+ .mail-index .app-nav {
+     grid-row: 2;
      grid-column: 3;
      display: flex;
      flex-flow: column;
-     padding-top: var(--logo-size);
+     font-size: var(--logo-size);
+     /* padding-top: var(--logo-size); */
  }
 
- .main-container-mail-header {
-     grid-row: 1;
-     grid-column: 2;
-     display: grid;
-     grid-template-columns: 0.5fr 1fr;
-     /* background-color: rgb(168, 173, 255); */
- }
-
- .mail-logo {
-    font-size: var(--logo-size);
-     align-self: end;
-     justify-self: start;
-     color: red;
- }
-
- .mail-search {
-     justify-self: start;
- }
-
- .main-container-side-nav {
-     /* background-color: yellowgreen; */
-     grid-row: 1 / -1;
-     grid-column: 1;
-     display: grid;
-     grid-template-rows: var(--logo-size) 1fr;
- }
-
- .btn-open-side-nav {
-     grid-column: 1;
-     grid-row: 1;
-     justify-self: start;
-     align-self: end;
-     padding-inline: var(--padding-inline);
- }
-
- .main-side-nav{
+.btn-open-side-nav{
     grid-column: 1;
-    grid-row:2;
-    padding-block: calc(var(--padding-inline)*2) ;
+    grid-row: 1;
+    justify-self: center;
+    align-self: center;
 
-    display: flex;
-    flex-flow: column;
-    align-items: start;
+    font-size: var(--logo-size);
  }
+
+

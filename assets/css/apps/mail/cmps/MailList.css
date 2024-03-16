@@ -1,12 +1,14 @@
  /* mail list */
 
  .mails-list {
+    grid-column: 2;
+    grid-row: 2;
     display: flex;
     flex-flow: column;
     background-color: var(--second-bg-color);
     height: 80vh;
-    
-    overflow-y: scroll; 
+
+    overflow-y: scroll;
     width: 100%;
  }
 

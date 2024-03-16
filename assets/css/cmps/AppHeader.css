@@ -1,24 +1,28 @@
-header {
 
-    background: lightcyan;
-    border-bottom: 2px solid white;
-}
 
 .app-header {
     display: flex;
     justify-content: space-between;
-    padding: 20px 0;
+    padding: 20px;
+    background: lightcyan;
+    border-bottom: 2px solid white;
 }
 
-nav a {
-    margin: .5em;
+.app-header-nav{
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-nav a:active {
+.app-header-nav a {
+    margin: 10px;
+}
+
+.app-header-nav a:active {
     color: purple;
 }
 
-nav a.active {
+.app-header-nav a.active {
     color: darkblue;
     font-weight: bold;
     text-decoration: overline;

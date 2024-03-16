@@ -42,7 +42,9 @@ export function ComposeMail({ setIsComposeMail, saveMail }) {
                 name="to"
                 value={newMailToSave.to}
                 onChange={handleChange}
-                placeholder="To" />
+                placeholder="To"
+                autoComplete="off"
+            />
 
             <input className="mail-compose-subject"
                 type="text"
@@ -50,7 +52,9 @@ export function ComposeMail({ setIsComposeMail, saveMail }) {
                 name="subject"
                 value={newMailToSave.subject}
                 onChange={handleChange}
-                placeholder="Subject" />
+                placeholder="Subject"
+                autoComplete="off"
+            />
 
             <input className="mail-compose-body"
                 type="text"
@@ -58,6 +62,7 @@ export function ComposeMail({ setIsComposeMail, saveMail }) {
                 name="body"
                 value={newMailToSave.body}
                 onChange={handleChange}
+                autoComplete="off"
             />
             <button className="btn btn-Send">Send</button>
         </form>

@@ -1,0 +1,14 @@
+.main-side-nav {
+    grid-column: 1;
+    grid-row: 2;
+
+    display: flex;
+    flex-flow: column;
+    align-self: start;
+    justify-self: center;
+    gap: 10px;
+}
+
+.main-side-nav span {
+    font-size: var(--logo-size);
+}
