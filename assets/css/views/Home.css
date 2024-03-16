@@ -1,11 +1,11 @@
 .home-container{
     height: 100vh;
-    /* width: 100vw; */
-    background-image: url(https://images.inc.com/uploaded_files/image/1920x1080/getty_508062248_271641.jpg);
+    
+    background-image: linear-gradient(rgba(173, 118, 81, 0.534), rgb(189, 189, 109));
     background-repeat:no-repeat ;
     background-size: cover;
     background-position:center ;
-    /* background-attachment:fixed ; */
+    
 }
 
 .home-article{

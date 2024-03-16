@@ -2,9 +2,8 @@
 import { noteService } from "../services/note.service.js"
 import {showSuccessMsg,showErrorMsg } from "../../../services/event-bus.service.js"
 
-export function NoteEdit({ note, loadNotes }) {
+export function NoteEdit({ note, loadNotes,setNoteEdit }) {
     
-
     function onEditNote(ev) {
         ev.preventDefault()
         
@@ -22,8 +21,10 @@ export function NoteEdit({ note, loadNotes }) {
                 console.error('Had issues saving note', err)
                 showErrorMsg('could not save note')
             })
-        
-        
+    }
+
+    function onCloseModal(){
+        setNoteEdit(null)
     }
 
     const { info } = note
@@ -49,5 +50,6 @@ export function NoteEdit({ note, loadNotes }) {
             />
             <button>save</button>
         </form>
+        <button onClick={()=>onCloseModal()}>x</button>
     </section>
 }
