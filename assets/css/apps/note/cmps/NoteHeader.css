@@ -1,0 +1,35 @@
+.note-header {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    /* background-color: aqua; */
+    display: grid;
+    grid-template-columns: auto 1fr;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-top: 10px;
+
+}
+
+.note-logo {
+    grid-column: 1;
+    display: flex;
+}
+
+.note-logo h1 {
+    font-size: var(--logo-size);
+    align-self: center;
+}
+
+.note-icon {
+    align-self: center;
+}
+
+.note-filter {
+    grid-column: 2;
+    justify-self: center;
+    font-size: 20px;
+    align-self: center;
+}
+
+.note-filter input{
+    font-size: 20px;
+}
