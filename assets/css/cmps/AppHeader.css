@@ -4,14 +4,24 @@
     display: flex;
     justify-content: space-between;
     padding: 20px;
-    background: lightcyan;
-    border-bottom: 2px solid white;
+    background:transparent ;
+    backdrop-filter: blur(10px);
+    background: rgba(224, 255, 255, 0.13);
+    /* border-bottom: 2px solid white; */
 }
 
 .app-header-nav{
+    /* background-color: rgba(144, 179, 255, 0.233); */
+    /* background-color: #f7f89c; */
     display: flex;
     align-items: center;
     gap: 10px;
+}
+
+.app-header-logo{
+    font-size: 2.5em;
+    margin: 5px 0 0 5px;
+    
 }
 
 .app-header-nav a {

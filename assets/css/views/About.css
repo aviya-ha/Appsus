@@ -1,0 +1,46 @@
+.about-container{
+    height: 100vh;
+    /* width: 100vw; */
+background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0),
+    rgba(0, 0, 0, 0.4)
+),url(https://www.yo-yoo.co.il/rekaim/images/uploads/c6bff5.jpg);
+    
+    background-repeat:no-repeat ;
+    background-size: cover;
+    background-position:center ;
+
+}
+
+.about-article-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: 100px;
+    padding-inline: 20px ;
+    text-align: center;
+
+    background:transparent ;
+    backdrop-filter: blur(10px);
+
+    /* background-color: aquamarine; */
+}
+
+.about-article-container h1{
+    font-size: 2em;
+}
+
+.about-article-container h2{
+    font-size: 2.5em;
+    
+}
+
+.about-article-container p{
+    font-size: 1.5em;
+    
+    /* margin: 0;
+    margin-bottom: 10px; */
+
+}
