@@ -68,11 +68,13 @@ function getEmptyMail(subject = '', from = '', to = '') {
         subject,
         body: '',
         isRead: false,
+        isStarred: false,
         sentAt: Date.now(),
         removedAt: null,
         from,
         to,
         folder: '',
+        
     }
 }
 

@@ -10,5 +10,11 @@
 }
 
 .main-side-nav span {
-    font-size: var(--logo-size);
+    font-size: var(--logo-size--1);
 }
+
+.main-side-nav span:hover {
+    scale: 1.2;
+}
+
+
