@@ -1,0 +1,10 @@
+ /* lato */
+
+ @font-face {
+    font-family: ZenDots;
+    src:url(/assets/fonts/ZenDots-Regular.ttf) ;
+ }
+ @font-face {
+    font-family: JetBrainsMono-Bold;
+    src:url(/assets/fonts/JetBrainsMono-Bold.ttf) ;
+ }

@@ -8,7 +8,7 @@ export function AppHeader() {
     const noteImg = "https://play-lh.googleusercontent.com/9bJoeaPbGTB8Tz_h4N-p-6ReRd8vSS-frZb2tmJulaGIoTKElKj3zpmcFJvnS96ANZP5=w240-h480-rw"
     return <header className="app-header">
         <Link to="/">
-            <h3>LOGO!</h3>
+            <h3>MISS!</h3>
         </Link>
         <nav className="app-header-nav">
             <NavLink to="/" className="fa-solid fa-house" style={{color : '#69c96b'}}></NavLink>
