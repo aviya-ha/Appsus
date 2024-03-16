@@ -41,3 +41,4 @@ export function MailHeader({ onSetFilter, filterBy }) {
 
 	</section>
 }
+

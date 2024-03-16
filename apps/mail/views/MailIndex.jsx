@@ -16,11 +16,14 @@ export function MailIndex() {
     const [isComposeMail, setIsComposeMail] = useState(false)
     const [filterBy, setFilterBy] = useState(mailService.getFilterFromParams(searchParams))
     const [newMail, setNewMail] = useState(mailService.getEmptyMail())
+    
+    const [isStarredMail, setIsStarredMail] = useState(null)
+
 
     useEffect(() => {
-        loadMails()
         setSearchParams(filterBy)
-    }, [filterBy, newMail])
+        loadMails()
+    }, [filterBy, newMail ,isStarredMail])
 
     function onSetFilter(fieldsToUpdate) {
         setFilterBy(prevFilter => ({ ...prevFilter, ...fieldsToUpdate }))
@@ -29,6 +32,7 @@ export function MailIndex() {
     function loadMails() {
         mailService.query(filterBy)
             .then((mails) => {
+                console.log('mails:', mails)
                 setMails(mails)
             })
     }
@@ -64,8 +68,10 @@ export function MailIndex() {
         />
 
         <MailList
+        setFilterBy={setFilterBy}
             mails={mails}
             isRead={isRead}
+            // setMails={setMails}
         />
         {
             isComposeMail && <ComposeMail

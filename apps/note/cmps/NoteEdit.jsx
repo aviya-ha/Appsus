@@ -28,7 +28,7 @@ export function NoteEdit({ note, loadNotes }) {
 
     const { info } = note
     return <section className="note-edit-container">
-        <h1>hayyyy</h1>
+        <h1>Edit</h1>
 
         <form onSubmit={onEditNote}>
             <input

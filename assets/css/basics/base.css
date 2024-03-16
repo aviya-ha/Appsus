@@ -23,6 +23,10 @@ img {
     object-fit: cover;
 }
 
+button{
+    border: none;
+}
+
 button:hover{
     border-radius: 25px;
     cursor: pointer;

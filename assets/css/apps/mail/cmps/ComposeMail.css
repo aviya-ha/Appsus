@@ -29,3 +29,13 @@
     background-color: var(--second-bg-color);
     padding: var(--padding-inline);
 }
+
+.mail-compose-to , .mail-compose-subject , .mail-compose-body{
+    border-radius: 0px;
+    border-bottom: 1px solid black;
+    background-color: white;
+}
+
+.mail-compose-to:focus , .mail-compose-subject:focus , .mail-compose-body:focus{
+    scale: 1;
+}
