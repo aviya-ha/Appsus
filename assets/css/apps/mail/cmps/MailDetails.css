@@ -1,9 +1,30 @@
 .mail-details-container {
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 1fr auto;
     grid-template-rows: auto 1fr;
     padding-inline: var(--padding-inline);
+    padding: 10px;
 
+}
+
+.mail-details-container .main-container-mail-header{
+    grid-column: 1;
+    grid-row: 1;
+    font-size: var(--logo-size);
+}
+
+.mail-details-container .app-nav{
+    grid-column: 2;
+    grid-row: 2;
+    display: flex;
+    flex-flow: column;
+    font-size: var(--logo-size);
+    gap: 5px;
+}
+
+.mail-details{
+    grid-column: 1;
+    grid-row: 2;
 }
 
 .header-mail-details {

@@ -15,9 +15,8 @@ export function MailList({ mails, isRead, }) {
         {
             mails.map(mail =>
                 <li key={mail.id} className={addClassIsRead(mail)}>
-                    <div className={"btn-container-mail " + addClassIsRead(mail)}>
-                        <button className="btn btn-selected-mail"></button>
-                        <button className="btn btn-starred-mail"></button>
+                    <div className={"container-mail " + addClassIsRead(mail)}>
+                        <button className="btn btn-starred-mail fa-regular fa-star"></button>
                     </div>
                     <Link to={`/mail/${mail.id}`}
                         onClick={() => { isRead(mail.id) }} >

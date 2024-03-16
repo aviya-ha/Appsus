@@ -6,6 +6,7 @@ import { mailService } from "../services/mail.service.js"
 
 import { MailSideNav } from "../cmps/MailSideNav.jsx"
 import { RemoveMail } from "../cmps/RemoveMail.jsx"
+import { AppNav } from "../../../cmps/AppNav.jsx"
 
 export function MailDetails() {
     const [isComposeMail, setIsComposeMail] = useState(false)
@@ -45,11 +46,17 @@ export function MailDetails() {
 
         <section className="main-container-mail-header">
 
-            <h1 className="mail-logo">Email</h1>
+            <div className="mail-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Gmail_icon_%282020%29.svg/1200px-Gmail_icon_%282020%29.svg.png" alt="gmail" />
+                <h1 >Email</h1>
+            </div>
+
         </section>
 
-        <MailSideNav
-            setIsComposeMail={setIsComposeMail} />
+<AppNav/>
+
+        {/* <MailSideNav
+            setIsComposeMail={setIsComposeMail} /> */}
 
         <section className="mail-details">
             <header className="header-mail-details">
