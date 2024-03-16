@@ -37,20 +37,20 @@ const gNotes = [
         },
         info: {
             title: 'Bobi and Me',
-            url: 'http://some-img/me',
+            url: 'https://hahacanvas.co.il/wp-content/uploads/2019/01/954927-1.jpg',
         },
         
     },
     {
         id: 'n103',
-        type: 'NoteTodos',
+        type: 'NoteList',
         isPinned: false,
         isEdit: false,
         info: {
             title: 'Get my stuff together',
             todos: [
-                { txt: 'Driving license', doneAt: null },
-                { txt: 'Coding power', doneAt: 187111111 }
+                { txt: 'Driving license', isDone: false },
+                { txt: 'Coding power', isDone: true }
             ]
         }
     }

@@ -1,4 +1,4 @@
-const { useState, useEffect } = React
+const { useState} = React
 
 import { noteService } from "../services/note.service.js"
 import { showSuccessMsg,showErrorMsg } from "../../../services/event-bus.service.js";
@@ -12,11 +12,9 @@ export function AddNoteText({setNotes,setIsOpen}) {
         backgroundColor: 'lightcyan'
     })
     
-    
     function onChangeNoteStyle({ style }) {
         setNoteCreateStyle(prevNoteCreateStyle => ({ ...prevNoteCreateStyle, ...style }))
     }
-    
     
     function onSaveNote(ev) {
         ev.preventDefault()
@@ -25,6 +23,7 @@ export function AddNoteText({setNotes,setIsOpen}) {
         let txt = ev.target[1].value
         noteToAdd.info.title = title
         noteToAdd.info.txt = txt
+        noteToAdd.type = 'NoteTxt'
         
         noteService.save(noteToAdd)
         .then(savedNote => {
@@ -32,17 +31,18 @@ export function AddNoteText({setNotes,setIsOpen}) {
             showSuccessMsg('Note created successfully')
         })
         .catch(err => {
-            // console.log('Had issues saving note', err)
             showErrorMsg('could not create note')
         })
-        // ev.target[0].value = ''
-        // ev.target[1].value = ''
-        setIsOpen(isOpen => !isOpen)
+        setIsOpen('')
     }
-
+    
     function onChangeStyle(style) {
-       
+        
         setNoteToAddStyle(prevNoteStyle => ({ ...prevNoteStyle, ...style }))
+    }
+    
+    function onClose(){
+        setIsOpen('')
     }
     
     return <section style={noteStyle}>
@@ -67,6 +67,7 @@ export function AddNoteText({setNotes,setIsOpen}) {
             />
         </form>
         <section className="add-note-text-action-container">
+        <button className="add-note-close" onClick={onClose}>X</button>
             <button form="add-note-form" className="btn btn-add-note" title="save note">save</button>
             <ColorInput
                 noteStyle={noteStyle}

@@ -15,7 +15,6 @@ export function NoteEdit({ note, loadNotes }) {
         note.info.txt = txt
         noteService.save(note)
             .then(savedNote => {
-                // console.log('Note saved!!');
                 loadNotes()
                 showSuccessMsg('Note edit successfully')
             })
