@@ -21,7 +21,7 @@ const gNotes = [
         isEdit: false,
         isPinned: true,
         style: {
-            backgroundColor: '#00d'
+            backgroundColor: '#ffffff'
         },
         info: {
             txt: 'Fullstack Me Baby!'
@@ -33,7 +33,7 @@ const gNotes = [
         isPinned: false,
         isEdit: false,
         style: {
-            backgroundColor: '#00d'
+            backgroundColor: '#ffffff'
         },
         info: {
             title: 'Bobi and Me',
@@ -115,7 +115,7 @@ function getEmptyNote() {
         isPinned: false,
         isEdit: false,
         style: {
-            backgroundColor:'',
+            backgroundColor:'#ffffff',
         },
         info: {
             title:'',

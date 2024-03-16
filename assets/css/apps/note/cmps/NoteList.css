@@ -1,5 +1,5 @@
 .note-list-container {
-    background-color: lightblue;
+    /* background-color: lightblue; */
     columns: 200px 6;
     padding: 10px;
     justify-content: center;
@@ -14,7 +14,7 @@
     /* flex-wrap: wrap; */
     
     border: 1px solid black;
-    border-radius: 20px;
+    border-radius: 5px;
     min-height: 200px;
     
     align-items: center;

@@ -11,19 +11,21 @@ import { AddNoteList } from "./AddNoteList.jsx";
 export function AccordionAddNote({ setNotes}) {
 	const [isOpen, setIsOpen] = useState('')
 
-	return (
-		<section className="accordion">
+	return <section className="accordion">
 
 			{!isOpen&&
 				<section  className="title-container">
+					<h1>Add new note:</h1>
 				<aside className="add-note-action-container-test">
-					<button onClick={() => setIsOpen('NoteText')} className="btn-icon fa-solid fa-font clean-btn"></button>
-					<button onClick={() => setIsOpen('NoteImg')} className="btn-icon fa-regular fa-image clean-btn"></button>
-					{/* <button className="btn-icon fa-brands fa-youtube clean-btn"></button> */}
-					<button onClick={() => setIsOpen('NoteList')} className="btn-icon fa-solid fa-list-ul clean-btn"></button>
+					<span onClick={() => setIsOpen('NoteText')} className="btn-icon fa-solid fa-font clean-btn"></span>
+					<span onClick={() => setIsOpen('NoteImg')} className="btn-icon fa-regular fa-image clean-btn"></span>
+					{/* <span className="btn-icon fa-brands fa-youtube clean-btn"></span> */}
+					<span onClick={() => setIsOpen('NoteList')} className="btn-icon fa-solid fa-list-ul clean-btn"></span>
 				</aside>
+				
 
-			</section>}
+			 </section>
+			}
 
 			{isOpen === 'NoteText' && <AddNoteText
 			setNotes={setNotes}
@@ -43,7 +45,7 @@ export function AccordionAddNote({ setNotes}) {
 			}
 
 		</section>
-	)
+	
 }
 
 
