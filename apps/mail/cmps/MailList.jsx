@@ -18,14 +18,10 @@ export function MailList({ mails, isRead, setFilterBy }) {
     }
 
     function changeStarred(mail) {
-        // console.log('mail:', mail)
-        // console.log('mail.isStarred:', mail.isStarred)
         mail.isStarred = !mail.isStarred
-        // console.log('mail.isStarred:', mail.isStarred)
         mailService.save(mail)
         
     }
-    // setFilterBy(prevFilter => ({ ...prevFilter}))
 
 
     return <ul className="mails-list clean-list ">
@@ -39,7 +35,6 @@ export function MailList({ mails, isRead, setFilterBy }) {
                         {!mail.isStarred &&
                             <button onClick={() => { changeStarred(mail) }} className='btn btn-starred-mail fa-regular fa-star' style={{ color: '#FFD43B' }}></button>
                         }
-                        {/* <button onClick={() => { changeStarred(mail) }} className={addClassIsStared(mail)} style={{ color: '#FFD43B' }}></button> */}
                     </div>
                     <Link to={`/mail/${mail.id}`}
                         onClick={() => { isRead(mail.id) }} >

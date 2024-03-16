@@ -1,17 +1,18 @@
 .user-msg {
     background-color: lightgray;
-    padding: 1em;
+    padding: 3px;
     position: absolute;
-    top: 1em;
+    bottom: 1em;
     right: 1em;
+    
 }
 
 .user-msg.success {
-    background-color: lightgreen;
+    background-color: rgb(204, 227, 204);
 }
 
 .user-msg.error {
-    background-color: lightpink;
+    background-color: rgb(252, 166, 180);
 }
 
 

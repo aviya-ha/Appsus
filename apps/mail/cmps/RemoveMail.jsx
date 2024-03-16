@@ -2,6 +2,7 @@
 const { Link } = ReactRouterDOM
 
 import { mailService } from "../services/mail.service.js"
+import { showSuccessMsg,showErrorMsg } from "../../../services/event-bus.service.js"
 
 
 export function RemoveMail({ mailId, setMail }) {
@@ -10,11 +11,11 @@ export function RemoveMail({ mailId, setMail }) {
         mailService.remove(mailId)
             .then(() => {
                 setMail((prevMails) => prevMails.filter(mail => mail.id !== mailId))
-                // showSuccessMsg(`Car removed successfully (${mailId})`)
+                showSuccessMsg(`mail removed successfully (${mailId})`)
             })
             .catch((err) => {
                 console.log('Had issues removing car', err)
-                // showErrorMsg(`Could not remove (${mailId})`)
+                showErrorMsg(`Could not remove (${mailId})`)
             })
     }
 

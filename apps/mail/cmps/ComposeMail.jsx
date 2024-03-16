@@ -1,6 +1,6 @@
 const { useState, useEffect } = React
 
-
+import { showSuccessMsg,showErrorMsg } from "../../../services/event-bus.service.js"
 import { mailService } from "../services/mail.service.js"
 
 export function ComposeMail({ setIsComposeMail, saveMail }) {
@@ -10,9 +10,14 @@ export function ComposeMail({ setIsComposeMail, saveMail }) {
     function onSaveMail(ev) {
         ev.preventDefault()
         showModal()
-        if (newMailToSave.to) {
-            saveMail(newMailToSave)
+        if (!newMailToSave.to) {
+            ev.target[0].value = ''
+            ev.target[1].value = ''
+            ev.target[2].value = ''
+            showErrorMsg('couldn\'t save mail without recipient address')
+            return
         }
+        saveMail(newMailToSave)
         setNewMailToSave('')
         ev.target[0].value = ''
         ev.target[1].value = ''

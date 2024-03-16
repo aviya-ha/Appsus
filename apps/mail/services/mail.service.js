@@ -25,9 +25,13 @@ export const mailService = {
 }
 
 function query(filterBy = getDefaultFilter()) {
+
     return storageService.query(MAIL_KEY)
         .then(mails => {
-            if (filterBy.folder) {
+            if (filterBy.folder === 'isStarred') {
+                mails = mails.filter(mail => mail.isStarred === true)
+            }
+            else if (filterBy.folder) {
                 mails = mails.filter(mail => mail.folder === filterBy.folder)
             }
             if (filterBy.search) {
@@ -39,6 +43,9 @@ function query(filterBy = getDefaultFilter()) {
             }
 
             if (filterBy.isRead === 'unRead') {
+                mails = mails.filter(mail => !mail.isRead)
+            }
+            if (filterBy.isStarred === 'unRead') {
                 mails = mails.filter(mail => !mail.isRead)
             }
             return mails
@@ -79,7 +86,7 @@ function getEmptyMail(subject = '', from = '', to = '') {
 }
 
 function getDefaultFilter() {
-    return { search: '', isRead: '', folder: 'inbox' }
+    return { search: '', isRead: '', folder: 'inbox',  }
 }
 
 function getFilterFromParams(searchParams = {}) {
@@ -88,6 +95,7 @@ function getFilterFromParams(searchParams = {}) {
         search: searchParams.get('search') || defaultFilter.search,
         isRead: searchParams.get('isRead') || defaultFilter.isRead,
         folder: searchParams.get('folder') || defaultFilter.folder,
+        // isStarred: searchParams.get('isStarred') || defaultFilter.isStarred,
     }
 }
 

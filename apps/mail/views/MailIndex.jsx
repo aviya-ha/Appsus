@@ -2,6 +2,7 @@ const { useState, useEffect } = React
 const { Link, useSearchParams } = ReactRouterDOM
 
 import { mailService } from "../services/mail.service.js"
+import { showSuccessMsg , showErrorMsg } from "../../../services/event-bus.service.js" 
 
 import { MailSideNav } from "../cmps/MailSideNav.jsx"
 import { MailHeader } from "../cmps/MailHeader.jsx"
@@ -32,9 +33,12 @@ export function MailIndex() {
     function loadMails() {
         mailService.query(filterBy)
             .then((mails) => {
-                console.log('mails:', mails)
                 setMails(mails)
             })
+            .catch(err =>{
+                showErrorMsg('can\'t load mails' , err)
+            }
+            )
     }
 
     function isRead(mailId) {
@@ -49,6 +53,11 @@ export function MailIndex() {
         mailService.save(newMail)
             .then(savedNewMail => {
                 setNewMail(prevNewMail => ({ ...prevNewMail, ...savedNewMail }))
+                showSuccessMsg('mail saved')
+            }
+            )
+            .catch(err =>{
+                showErrorMsg('can\'t save mail' , err)
             }
             )
     }

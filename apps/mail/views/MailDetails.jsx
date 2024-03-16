@@ -55,9 +55,6 @@ export function MailDetails() {
 
 <AppNav/>
 
-        {/* <MailSideNav
-            setIsComposeMail={setIsComposeMail} /> */}
-
         <section className="mail-details">
             <header className="header-mail-details">
                 <Link to="/mail"><button className="btn btn-go-back fa-solid fa-arrow-left"></button></Link>
@@ -75,14 +72,5 @@ export function MailDetails() {
             </section>
 
         </section>
-
-        {/* {
-            isComposeMail && <ComposeMail
-                setIsComposeMail={setIsComposeMail}
-                saveMail={saveMail}
-                newMail={newMail}
-                // saveMail={saveMail}
-            />
-        } */}
     </section>
 }
