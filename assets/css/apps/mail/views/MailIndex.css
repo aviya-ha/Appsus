@@ -2,6 +2,17 @@
 
  .mail-index {
      padding-inline: var(--padding-inline);
+     display: grid;
+     grid-template-columns: auto 1fr auto;
+     grid-template-rows: auto 1fr;
+ }
+
+ .mail-index .app-nav{
+    grid-row: 1 / -1;
+     grid-column: 3;
+     display: flex;
+     flex-flow: column;
+     padding-top: var(--logo-size);
  }
 
  .main-container-mail-header {

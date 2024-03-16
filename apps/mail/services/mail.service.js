@@ -4,31 +4,12 @@ import { utilService } from '../../../services/util.service.js'
 import { storageServiceLocal } from '../../../services/storage.service.js'
 import { storageService } from '../../../services/async-storage.service.js'
 
-
-
 const MAIL_KEY = 'mailDB'
-
-// var gFilterBy
-
-// const email = {
-//     id: 'e101',
-//     subject: 'Miss you!',
-//     body: 'Would love to catch up sometimes',
-//     isRead: false,
-//     sentAt: 1551133930594,
-//     removedAt: null,
-//     from: 'momo@momo.com',
-//     to: 'user@appsus.com'
-// }
-
 const loggedinUser = {
     email: 'user@appsus.com',
     fullname: 'Mahatma Appsus'
 }
-
-
 _createMails()
-// console.log('_createMails():', _createMails())
 
 export const mailService = {
     query,
@@ -42,17 +23,10 @@ export const mailService = {
     sortMails
 
 }
-// For Debug only
-window.cs = mailService
 
-
-// function query(filterBy = getDefaultFilter()) {
 function query(filterBy = getDefaultFilter()) {
-    console.log('filterBy', filterBy)
-
     return storageService.query(MAIL_KEY)
         .then(mails => {
-            console.log('mails:', mails)
             if (filterBy.folder) {
                 mails = mails.filter(mail => mail.folder === filterBy.folder)
             }
@@ -73,8 +47,6 @@ function query(filterBy = getDefaultFilter()) {
 
 function get(mailID) {
     return storageService.get(MAIL_KEY, mailID)
-    // .then(mail => _setNextPrevMailId(mail))
-    // return axios.get(MAIL_KEY, mailID)
 }
 
 function remove(mailID) {
@@ -82,7 +54,6 @@ function remove(mailID) {
 }
 
 function save(mail) {
-    console.log('mail:', mail)
     if (mail.id) {
         return storageService.put(MAIL_KEY, mail)
     } else {
@@ -118,9 +89,8 @@ function getFilterFromParams(searchParams = {}) {
     }
 }
 
-// inbox  starred important sent drafts trash
-
 function sortMails(mails) {
+    // inbox  starred important sent drafts trash
 
     mails.map(mail => {
         if (mail.from === loggedinUser.email) {
@@ -141,38 +111,39 @@ function _createMails() {
         mails.push(_createMail('new updates', 'momo@momo.com', 'user@appsus.com'))
         mails.push(_createMail('Upload the files to a new cloud', 'momo@momo.com', 'user@appsus.com'))
         mails.push(_createMail('Updates Privacy Policy', 'momo@momo.com', 'user@appsus.com'))
+        mails.push(_createMail('Welcome party', 'momo@momo.com', 'user@appsus.com'))
+        mails.push(_createMail('Upload the files to a new cloud', 'momo@momo.com', 'user@appsus.com'))
+        mails.push(_createMail('new updates', 'momo@momo.com', 'user@appsus.com'))
+        mails.push(_createMail('Welcome party', 'momo@momo.com', 'user@appsus.com'))
+        mails.push(_createMail('Updates Privacy Policy', 'momo@momo.com', 'user@appsus.com'))
+        mails.push(_createMail('Welcome party', 'momo@momo.com', 'user@appsus.com'))
+        mails.push(_createMail('new updates', 'momo@momo.com', 'user@appsus.com'))
+        mails.push(_createMail('Upload the files to a new cloud', 'momo@momo.com', 'user@appsus.com'))
+        mails.push(_createMail('Welcome party', 'momo@momo.com', 'user@appsus.com'))
+        mails.push(_createMail('new updates', 'momo@momo.com', 'user@appsus.com'))
+        mails.push(_createMail('Upload the files to a new cloud', 'momo@momo.com', 'user@appsus.com'))
+        mails.push(_createMail('Updates Privacy Policy', 'momo@momo.com', 'user@appsus.com'))
+        mails.push(_createMail('new updates', 'momo@momo.com', 'user@appsus.com'))
+        mails.push(_createMail('Upload the files to a new cloud', 'momo@momo.com', 'user@appsus.com'))
+        mails.push(_createMail('Updates Privacy Policy', 'momo@momo.com', 'user@appsus.com'))
+        mails.push(_createMail('Welcome party', 'momo@momo.com', 'user@appsus.com'))
+
         mails.push(_createMail('Hay to all', 'user@appsus.com', 'momo@momo.com'))
         mails.push(_createMail('Welcome party', 'user@appsus.com', 'momo@momo.com'))
-        mails.push(_createMail('I don\'t like the updates Privacy Policy', 'user@appsus.com', 'momo@momo.com'))
-        mails.push(_createMail('I don\'t like the updates Privacy Policy', 'user@appsus.com', 'momo@momo.com'))
-        mails.push(_createMail('I don\'t like the updates Privacy Policy', 'user@appsus.com', 'momo@momo.com'))
         mails.push(_createMail('Your Battle.net Transaction Currency Will Be Changing', 'user@appsus.com', 'momo@momo.com'))
         mails.push(_createMail('I don\'t like the updates Privacy Policy', 'user@appsus.com', 'momo@momo.com'))
-        mails.push(_createMail('I don\'t like the updates Privacy Policy', 'user@appsus.com', 'momo@momo.com'))
-        mails.push(_createMail('I don\'t like the updates Privacy Policy', 'user@appsus.com', 'momo@momo.com'))
-        mails.push(_createMail('I don\'t like the updates Privacy Policy', 'user@appsus.com', 'momo@momo.com'))
-        mails.push(_createMail('I don\'t like the updates Privacy Policy', 'user@appsus.com', 'momo@momo.com'))
-        mails.push(_createMail('I don\'t like the updates Privacy Policy', 'user@appsus.com', 'momo@momo.com'))
-        mails.push(_createMail('I don\'t like the updates Privacy Policy', 'user@appsus.com', 'momo@momo.com'))
-        mails.push(_createMail('I don\'t like the updates Privacy Policy', 'user@appsus.com', 'momo@momo.com'))
-        mails.push(_createMail('I don\'t like the updates Privacy Policy', 'user@appsus.com', 'momo@momo.com'))
-        mails.push(_createMail('I don\'t like the updates Privacy Policy', 'user@appsus.com', 'momo@momo.com'))
-        mails.push(_createMail('I don\'t like the updates Privacy Policy', 'user@appsus.com', 'momo@momo.com'))
-        mails.push(_createMail('I don\'t like the updates Privacy Policy', 'user@appsus.com', 'momo@momo.com'))
-        mails.push(_createMail('I don\'t like the updates Privacy Policy', 'user@appsus.com', 'momo@momo.com'))
-        mails.push(_createMail('I don\'t like the updates Privacy Policy', 'user@appsus.com', 'momo@momo.com'))
-        mails.push(_createMail('I don\'t like the updates Privacy Policy', 'user@appsus.com', 'momo@momo.com'))
-        mails.push(_createMail('I don\'t like the updates Privacy Policy', 'user@appsus.com', 'momo@momo.com'))
+        mails.push(_createMail('Hay to all', 'user@appsus.com', 'momo@momo.com'))
         mails.push(_createMail('I don\'t like the updates Privacy Policy', 'user@appsus.com', 'momo@momo.com'))
         mails.push(_createMail('Welcome party', 'user@appsus.com', 'momo@momo.com'))
+        mails.push(_createMail('Hay to all', 'user@appsus.com', 'momo@momo.com'))
+        mails.push(_createMail('Your Battle.net Transaction Currency Will Be Changing', 'user@appsus.com', 'momo@momo.com'))
+        mails.push(_createMail('I don\'t like the updates Privacy Policy', 'user@appsus.com', 'momo@momo.com'))
         mails.push(_createMail('Welcome party', 'user@appsus.com', 'momo@momo.com'))
+        mails.push(_createMail('Your Battle.net Transaction Currency Will Be Changing', 'user@appsus.com', 'momo@momo.com'))
         mails.push(_createMail('Welcome party', 'user@appsus.com', 'momo@momo.com'))
-        mails.push(_createMail('Welcome party', 'user@appsus.com', 'momo@momo.com'))
-        mails.push(_createMail('Welcome party', 'user@appsus.com', 'momo@momo.com'))
-        mails.push(_createMail('Welcome party', 'user@appsus.com', 'momo@momo.com'))
-        mails.push(_createMail('Welcome party', 'user@appsus.com', 'momo@momo.com'))
-        mails.push(_createMail('Welcome party', 'user@appsus.com', 'momo@momo.com'))
-        mails.push(_createMail('Welcome party', 'user@appsus.com', 'momo@momo.com'))
+        mails.push(_createMail('I don\'t like the updates Privacy Policy', 'user@appsus.com', 'momo@momo.com'))
+        mails.push(_createMail('Hay to all', 'user@appsus.com', 'momo@momo.com'))
+        mails.push(_createMail('I don\'t like the updates Privacy Policy', 'user@appsus.com', 'momo@momo.com'))
         mails.push(_createMail('Welcome party', 'user@appsus.com', 'momo@momo.com'))
 
         storageServiceLocal.saveToStorage(MAIL_KEY, mails)
@@ -183,7 +154,8 @@ function _createMail(subject = '', from = '', to = '') {
     const mail = getEmptyMail(subject, from, to)
     mail.id = utilService.makeId()
     mail.body = utilService.makeLorem(100)
-    mail.folder = (mail.from === loggedinUser.email)?  'inbox' :  'sent'
+    if (!mail.from) mail.from = loggedinUser.email
+    mail.folder = (mail.from !== loggedinUser.email) ? 'inbox' : 'sent'
     return mail
 }
 

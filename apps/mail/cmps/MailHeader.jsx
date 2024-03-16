@@ -7,41 +7,28 @@ export function MailHeader({ onSetFilter, filterBy }) {
 		onSetFilter(filterByToEdit)
 	}, [filterByToEdit])
 
-
 	function onFilter({ target }) {
 		let { value, name: field } = target
 		setFilterByToEdit((prevFilterBy) => ({ ...prevFilterBy, [field]: value }))
 		onSetFilter(filterByToEdit)
 	}
 
-
 	return <section className="main-container-mail-header">
-
 		<h1 className="mail-logo">Email</h1>
-<div>
+		<div>
+			<input className="mail-search"
+				type="text"
+				id="search"
+				name="search"
+				value={filterByToEdit.search}
+				onChange={onFilter}
+				placeholder="Search" />
 
-		<input className="mail-search"
-			type="text"
-			id="search"
-			name="search"
-			value={filterByToEdit.search}
-			onChange={onFilter}
-			placeholder="Search" />
-
-
-			
-	<select className="" onChange={onFilter} name="isRead">
-			<option value="all">All</option>
-			<option value="read">Read</option>
-			<option value="unRead">Unread</option>
-		</select>
-</div>
-		
-
-
-
-
-
-
+			<select className="" onChange={onFilter} name="isRead">
+				<option value="all">All</option>
+				<option value="read">Read</option>
+				<option value="unRead">Unread</option>
+			</select>
+		</div>
 	</section>
 }
