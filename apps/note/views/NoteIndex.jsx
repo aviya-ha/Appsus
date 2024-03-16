@@ -4,10 +4,11 @@ const { Link, useSearchParams } = ReactRouterDOM
 import { noteService } from "../services/note.service.js"
 import {showSuccessMsg,showErrorMsg } from "../../../services/event-bus.service.js"
 
-import { NoteList } from "../cmps/NoteList.jsx"
-import { NoteCreate } from "../cmps/NoteCreate.jsx"
-import { NoteEdit } from "../cmps/NoteEdit.jsx"
 import { NoteFilter } from "../cmps/NoteFilter.jsx"
+import { AccordionAddNote } from "../cmps/AccordionAddNote.jsx"
+import { NoteList } from "../cmps/NoteList.jsx"
+import { NoteEdit } from "../cmps/NoteEdit.jsx"
+
 
 export function NoteIndex() {
     const [searchParams, setSearchParams] = useSearchParams()
@@ -63,7 +64,7 @@ export function NoteIndex() {
             onSetFilter={onSetFilter}
             filterBy={filterBy} />
 
-        <NoteCreate
+        <AccordionAddNote
         setNotes={setNotes}
             
         />

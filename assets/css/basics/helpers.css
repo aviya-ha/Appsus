@@ -31,3 +31,8 @@
 .deBug{
    border: 2px dotted red; 
 }
+
+.clean-btn{
+    border: 0;
+    background-color: inherit;
+}
