@@ -89,6 +89,7 @@ export function NoteIndex() {
                     note={note}
                     onEditNote={onEditNote}
                     loadNotes={loadNotes}
+                    setNoteEdit={setNoteEdit}
                 />
             }
         </main>
